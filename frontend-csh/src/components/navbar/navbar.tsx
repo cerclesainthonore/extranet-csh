@@ -1,10 +1,11 @@
 import {useTranslation} from "react-i18next";
 import {useCallback, useMemo, ReactNode} from "react";
 import styles from "./navbar.module.css";
+import {Dropdown} from "../dropdown/dropdown.tsx";
 
 const parishUrl: string = import.meta.env.VITE_EXTRANET_PARISH_URL;
-// const igUrl: string = import.meta.env.VITE_EXTRANET_INSTAGRAM_URL;
-// const ytUrl: string = import.meta.env.VITE_EXTRANET_YOUTUBE_URL;
+const igUrl: string = import.meta.env.VITE_EXTRANET_INSTAGRAM_URL;
+const ytUrl: string = import.meta.env.VITE_EXTRANET_YOUTUBE_URL;
 
 const Navbar = (): ReactNode => {
   const {t, i18n} = useTranslation();
@@ -38,12 +39,20 @@ const Navbar = (): ReactNode => {
           <a href="/conferences" className={styles["navbar-link"]}>
             <span>{t("navbar.conferences")}</span>
           </a>
-          <a href={parishUrl} target="_blank" className={styles["navbar-link"]}>
-            <span>{t("navbar.parish")}</span>
-          </a>
-          <a href="/about" className={styles["navbar-link"]}>
-            <span>{t("navbar.about")}</span>
-          </a>
+          <Dropdown className={styles["navbar-dropdown"]} title={t("navbar.about")} options={[
+            <a href="/about" className={styles["navbar-dropdown-link"]}>
+              <span>{t("navbar.aboutCSH")}</span>
+            </a>,
+            <a href={parishUrl} target="_blank" className={styles["navbar-dropdown-link"]}>
+              <span>{t("navbar.parish")}</span>
+            </a>,
+            <a href={ytUrl} target="_blank" className={styles["navbar-dropdown-link"]}>
+              <span>{t("navbar.social.youtube")}</span>
+            </a>,
+            <a href={igUrl} target="_blank" className={styles["navbar-dropdown-link"]}>
+              <span>{t("navbar.social.instagram")}</span>
+            </a>
+          ]}/>
           <a href="/contact" className={styles["navbar-link"]}>
             <span>{t("navbar.contact")}</span>
           </a>

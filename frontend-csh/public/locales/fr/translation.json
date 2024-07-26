@@ -4,6 +4,11 @@
     "about": "À propos",
     "conferences": "Les conférences",
     "parish": "La paroisse St-Roch",
-    "contact": "Nous contacter"
+    "contact": "Nous contacter",
+    "aboutCSH": "Le cercle Saint-Honoré",
+    "social": {
+      "youtube": "Youtube",
+      "instagram": "Instagram"
+    }
   }
 }

@@ -44,6 +44,23 @@
     pointer-events: auto;
 }
 
+.navbar-dropdown {
+    font-weight: 600;
+    color: var(--csh-font-color-light);
+    margin: 0 10px;
+    pointer-events: auto;
+}
+
+.navbar-dropdown .csh-dropdown-options {
+    top: var(--csh-navbar-height-normal);
+}
+
+.navbar-dropdown .navbar-dropdown-link {
+    font-weight: 600;
+    color: var(--csh-font-color-light);
+    margin: 0 10px;
+}
+
 .navbar-language-container {
     position: absolute;
     top: 0;
