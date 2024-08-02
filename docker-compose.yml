@@ -2,13 +2,15 @@ name: 'extranet-csh'
 
 services:
   csh-backend:
-    build: csh-backend
+    build: backend-csh
     container_name: csh-backend
     restart: always
-    env:
-      - CSH_MONGODB_HOST: mongodb
-      - SCH_MONGODB_DATABASE: CSH
-      - PORT: 3000
+    environment:
+      MONGODB_HOST: mongodb
+      MONGODB_USERNAME: csh-backend
+      MONGODB_PASSWORD: very_secret_password
+      MONGODB_DATABASE: CSH
+      PORT: 3000
     networks:
       - csh-back-net
       - csh-net
@@ -19,11 +21,11 @@ services:
     build: frontend-csh
     container_name: csh-frontend
     restart: always
-    env:
-      - VITE_EXTRANET_PARISH_URL: https://www.paroissesaintroch.fr
-      - VITE_EXTRANET_INSTAGRAM_URL: https://www.instagram.com/cerclesainthonore/
-      - VITE_EXTRANET_YOUTUBE_URL=http: https://www.youtube.com/@cerclesthonore
-      - VITE_EXTRANET_API_URL: http://localhost:8080/api
+    environment:
+      VITE_EXTRANET_PARISH_URL: https://www.paroissesaintroch.fr
+      VITE_EXTRANET_INSTAGRAM_URL: https://www.instagram.com/cerclesainthonore/
+      VITE_EXTRANET_YOUTUBE_URL=http: https://www.youtube.com/@cerclesthonore
+      VITE_EXTRANET_API_URL: http://localhost:8080/api
     networks:
       - csh-net
   
@@ -38,7 +40,7 @@ services:
     networks:
       - csh-back-net
     volumes:
-      - mongodb-data:/data/db
+      - ./mongodb-data:/data/db
       - ./init_mongo.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
   
   nginx:
@@ -57,7 +59,7 @@ services:
 
 networks:
   csh-net:
-#  csh-back-net:
-#
-#volumes:
-#  mongodb-data:
+  csh-back-net:
+
+volumes:
+  mongodb-data:

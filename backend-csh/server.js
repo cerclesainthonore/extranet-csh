@@ -10,7 +10,10 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT;
-const mongoURI = `mongodb://${process.env.MONGODB_HOST}:27017/${process.env.MONGODB_DATABASE}`
+const dbHost = process.env.MONGODB_HOST;
+const dbUsername = process.env.MONGODB_USERNAME;
+const dbPassword = process.env.MONGODB_PASSWORD;
+const mongoURI = `mongodb://${dbUsername}:${dbPassword}@${dbHost}:27017/${process.env.MONGODB_DATABASE}`
 
 // Middleware
 app.use(cors());
@@ -51,10 +54,13 @@ const programStorage = new GridFsStorage({
 const programUpload = multer({ storage: programStorage });
 
 app.get("/", (req, res) => {
+    log("Received GET /");
     res.send("Hello World!");
 });
 
 app.post("/program", programUpload.single("file"), (req, res) => {
+    log("Received POST /program");
+
     gfs.remove({ filename: "program_image", root: "uploads" }, (err, gridStore) => {
         if (err) {
             return res.status(404).json({ err: err });
