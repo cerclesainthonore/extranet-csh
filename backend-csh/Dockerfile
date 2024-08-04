@@ -8,8 +8,8 @@ USER root
 
 RUN npm install
 
-COPY --chown=node:node ./server.js .
+COPY --chown=node:node . .
 
 EXPOSE 8080
 
-CMD [ "node", "app.js" ]
+CMD [ "node", "server.js" ]

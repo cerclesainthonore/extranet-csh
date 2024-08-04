@@ -1,10 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const multer = require("multer");
-const { GridFsStorage } = require("multer-gridfs-storage");
-const Grid = require("gridfs-stream");
 const cors = require("cors");
 const dotenv = require("dotenv");
+const {uploadProgram} = require("./utils/upload");
+const Grid = require("gridfs-stream");
+const {log, error} = require("./utils/logging");
 
 dotenv.config();
 
@@ -13,26 +13,22 @@ const port = process.env.PORT;
 const dbHost = process.env.MONGODB_HOST;
 const dbUsername = process.env.MONGODB_USERNAME;
 const dbPassword = process.env.MONGODB_PASSWORD;
-const mongoURI = `mongodb://${dbUsername}:${dbPassword}@${dbHost}:27017/${process.env.MONGODB_DATABASE}`
+const mongoURI = `mongodb://${dbUsername}:${dbPassword}@${dbHost}:27017/${process.env.MONGODB_DATABASE}?retryWrites=true&w=majority`;
 
 // Middleware
 app.use(cors());
 app.use(express.json());
-
-function log(message) {
-    console.log(`${new Date().toLocaleString()} - [INFO] - ${message}`);
-}
-
-function error(message) {
-    console.log(`${new Date().toLocaleString()} - [ERROR] - ${message}`);
-}
+app.use(express.urlencoded({extended: true}));
 
 // Connexion à MongoDB
 mongoose.connect(mongoURI);
 
 const db = mongoose.connection;
 let gfs;
-db.on("error", console.error.bind(console, "connection error:"));
+db.on("error", (err) => {
+    console.error.bind(console, "connection error:");
+    error("MongoDB connection error: " + err);
+});
 db.once("open", () => {
     log("Connected to MongoDB");
 
@@ -41,56 +37,58 @@ db.once("open", () => {
     log("GridFS Stream initialized")
 });
 
-const programStorage = new GridFsStorage({
-    url: mongoURI,
-    file: (req, file) => {
-        return {
-            filename: `program_${Date.now()}${path.extname(file.originalname)}`,
-            bucketName: "uploads",
-        };
-    },
-});
-
-const programUpload = multer({ storage: programStorage });
-
 app.get("/", (req, res) => {
     log("Received GET /");
     res.send("Hello World!");
 });
 
-app.post("/program", programUpload.single("file"), (req, res) => {
+app.post("/program", uploadProgram().single("file"), async (req, res) => {
     log("Received POST /program");
 
-    gfs.remove({ filename: "program_image", root: "uploads" }, (err, gridStore) => {
-        if (err) {
-            return res.status(404).json({ err: err });
+    try {
+        if (!req.file) {
+            throw new Error("No file received");
         }
-        // Rename uploaded file
-        const file = req.file;
-        gfs.files.updateOne(
-            { _id: file.id },
-            { $set: { filename: "program_image" } },
-            (err, updatedFile) => {
-                if (err) {
-                    return res.status(500).json({ err: err });
-                }
-                res.status(201).json({ file: updatedFile });
-            }
-        );
-    });
-});
 
-app.get("/program", (req, res) => {
+        log(`File received: ${req.file.filename}`);
+        res.status(201).json({text: "File uploaded successfully!", file: req.file});
+    } catch (err) {
+        error(err.message);
+        res.status(400).json({
+            error: {text: "Unable to upload the file", message: err.message},
+        });
+    }
+
+    // gfs.remove({ filename: "program_image", root: "uploads" }, (err, gridStore) => {
+    //     if (err) {
+    //         return res.status(404).json({ err: err });
+    //     }
+    //     // Rename uploaded file
+    //     const file = req.file;
+    //     gfs.files.updateOne(
+    //         { filename: file.filename },
+    //         { $set: { filename: "program_image" } },
+    //         (err, updatedFile) => {
+    //             if (err) {
+    //                 return res.status(500).json({ err: err });
+    //             }
+    //             res.status(201).json({ file: updatedFile });
+    //         }
+    //     );
+    // });
+});
+/*
+app.get("/program", async (req, res) => {
     log("Received GET /program");
 
-    gfs.files.findOne({ filename: "program_image" }, (err, file) => {
+    await gfs.files.find({}, (err, file) => {
         if (!file || file.length === 0) {
             error("Program image not found");
             return res.status(404).json({ err: "Unable to find program image" });
         }
 
         if (file.contentType === "image/jpeg" || file.contentType === "image/png") {
-            const readstream = gfs.createReadStream(file.filename);
+            const readstream = gfs.createReadStream(file[0].filename);
             readstream.pipe(res);
         } else {
             res.status(404).json({ err: "Not an image" });
@@ -98,7 +96,7 @@ app.get("/program", (req, res) => {
         }
     });
 });
-
+*/
 app.listen(port, () => {
     log(`Server is running on port ${port}`);
 });
