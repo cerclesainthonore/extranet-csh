@@ -1,7 +1,7 @@
 db.createUser(
     {
         user: "csh-backend",
-        pwd: "very_secret_password",
+        pwd: "UNSECURE__CHANGE_THIS_PASSWORD",
         roles: [
             {
                 role: "readWrite",
@@ -10,3 +10,4 @@ db.createUser(
         ]
     }
 );
+db.createCollection("Program")

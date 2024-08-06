@@ -8,7 +8,7 @@ services:
     environment:
       MONGODB_HOST: mongodb
       MONGODB_USERNAME: csh-backend
-      MONGODB_PASSWORD: very_secret_password
+      MONGODB_PASSWORD: UNSECURE__CHANGE_THIS_PASSWORD
       MONGODB_DATABASE: CSH
       PORT: 3000
     networks:
@@ -35,8 +35,10 @@ services:
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: csh-backend
-      MONGO_INITDB_ROOT_PASSWORD: very_sercret_password
+      MONGO_INITDB_ROOT_PASSWORD: UNSECURE__CHANGE_THIS_PASSWORD
       MONGO_INITDB_DATABASE: CSH
+    ports:
+      - "27012:27017"
     networks:
       - csh-back-net
     volumes:
