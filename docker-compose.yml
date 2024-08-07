@@ -24,7 +24,8 @@ services:
     environment:
       VITE_EXTRANET_PARISH_URL: https://www.paroissesaintroch.fr
       VITE_EXTRANET_INSTAGRAM_URL: https://www.instagram.com/cerclesainthonore/
-      VITE_EXTRANET_YOUTUBE_URL=http: https://www.youtube.com/@cerclesthonore
+      VITE_EXTRANET_YOUTUBE_URL: https://www.youtube.com/@cerclesthonore
+      VITE_EXTRANET_FACEBOOK_URL: https://www.facebook.com/people/Cercle-Saint-Honoré/100089446511533/
       VITE_EXTRANET_API_URL: http://localhost:8080/api
     networks:
       - csh-net

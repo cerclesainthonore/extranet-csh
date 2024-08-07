@@ -7,6 +7,7 @@ import "./navbar.css";
 const parishUrl: string = import.meta.env.VITE_EXTRANET_PARISH_URL;
 const igUrl: string = import.meta.env.VITE_EXTRANET_INSTAGRAM_URL;
 const ytUrl: string = import.meta.env.VITE_EXTRANET_YOUTUBE_URL;
+const fbUrl: string = import.meta.env.VITE_EXTRANET_FACEBOOK_URL;
 
 const Navbar = (): ReactNode => {
     const {t} = useTranslation();
@@ -49,6 +50,9 @@ const Navbar = (): ReactNode => {
                 </a>
                 <a href={ytUrl} target="_blank" className="navbar-social">
                     <img src="/assets/social/youtube.svg" alt="Youtube" width={25} height={25}/>
+                </a>
+                <a href={fbUrl} target="_blank" className="navbar-social">
+                    <img src="/assets/social/facebook.svg" alt="Facebook" width={25} height={25}/>
                 </a>
             </div>
         </>

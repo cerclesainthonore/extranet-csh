@@ -6,7 +6,7 @@ const About = (): ReactNode => {
 
   return (
       <div id="about">
-        {t("about")}
+        {t("about.summary")}
       </div>
   );
 };

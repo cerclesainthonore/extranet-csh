@@ -4,6 +4,7 @@
     --csh-color-2: #f8d258;
     --csh-color-3: #fdeec6;
     --csh-font-color-light: #fdf3d9;
+    --csh-font-color-dark: #06265e;
     --csh-navbar-height-normal: 77px;
     --csh-navbar-height-big: 100px;
 }
@@ -123,13 +124,13 @@ body {
     position: relative;
 }
 
-@media (max-width: 930px) {
+@media (max-width: 1050px) {
     .main-body {
         padding-top: var(--csh-navbar-height-big);
     }
 }
 
-@media (min-width: 930px) {
+@media (min-width: 1050px) {
     .main-body {
         padding-top: var(--csh-navbar-height-normal);
     }

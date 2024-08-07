@@ -10,4 +10,4 @@ db.createUser(
         ]
     }
 );
-db.createCollection("Program")
+db.createCollection("Newsletter");

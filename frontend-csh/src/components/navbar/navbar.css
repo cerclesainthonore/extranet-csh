@@ -3,6 +3,7 @@
     background-color: var(--csh-color-1);
     position: fixed;
     z-index: 50;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
 
 .navbar-container .navbar-logo {
@@ -68,7 +69,7 @@
     background-color: var(--csh-color-1);
 }
 
-@media (min-width: 930px) {
+@media (min-width: 1050px) {
     .navbar-container {
         height: var(--csh-navbar-height-normal);
     }
@@ -113,7 +114,7 @@
     }
 }
 
-@media (max-width: 930px) {
+@media (max-width: 1050px) {
     .navbar-no-menu {
         display: none;
     }
@@ -150,10 +151,11 @@
         flex-direction: row;
         align-items: center;
         justify-content: center;
+        padding-left: 50px;
     }
 
     .navbar-social-container .navbar-social {
-        margin: 0 50px;
+        width: 100%;
         flex-direction: row;
     }
 
