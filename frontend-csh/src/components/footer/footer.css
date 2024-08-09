@@ -1,0 +1,6 @@
+.footer-container {
+    bottom: 0;
+    width: 100%;
+    height: var(--csh-footer-height-normal);
+    background-color: var(--csh-footer-color);
+}

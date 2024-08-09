@@ -5,8 +5,11 @@
     --csh-color-3: #fdeec6;
     --csh-font-color-light: #fdf3d9;
     --csh-font-color-dark: #06265e;
+    --csh-footer-color: #2e2f39;
+    --csh-footer-font-color: #575968;
     --csh-navbar-height-normal: 77px;
     --csh-navbar-height-big: 100px;
+    --csh-footer-height-normal: 90px;
 }
 
 html {

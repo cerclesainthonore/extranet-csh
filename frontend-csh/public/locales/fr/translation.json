@@ -7,7 +7,11 @@
     "contact": "Nous contacter"
   },
   "home": {
-    "title": "Cercle Saint-Honoré",
+    "title": {
+      "1": "Cercle",
+      "2": "Saint",
+      "3": "Honoré"
+    },
     "subtitle": "Au sujet du le beau, du bien, du vrai de la France et de Dieu",
     "aboutBtn": "En savoir plus",
     "flyersButton": "Notre programme",

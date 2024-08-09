@@ -11,9 +11,11 @@ const Home = (): ReactNode => {
         <div className="home-container">
             <div className="home-summary-container">
                 <div className="home-summary">
-                    <p>{t("home.title")}</p>
-                    <a href="/#affiches">{t("home.flyersButton").toUpperCase()}</a>
+                    <p>{t("home.title.1").toUpperCase()}</p>
+                    <p>{t("home.title.2").toUpperCase()}</p>
+                    <p>{t("home.title.3").toUpperCase()}</p>
                 </div>
+                <a href="/#affiches" className="home-summary-button">{t("home.flyersButton").toUpperCase()}</a>
                 <div className="video-wrapper">
                     <video autoPlay muted loop className="home-summary-video">
                         <source src="/assets/videos/stroch.mp4" type="video/mp4"/>
@@ -31,19 +33,23 @@ const Home = (): ReactNode => {
             <div className="home-flyer-container" id="affiches">
                 <div className="home-flyer">
                     <p className="home-flyer-title">{t("home.conferenceTitle").toUpperCase()}</p>
-                    <img
-                        src="/assets/next-conference/next_conference.png"
-                        alt={t("home.conferenceTitle")}
-                        className="home-flyer-image"
-                    />
+                    <a href="/assets/next-conference/next_conference.png" download="prochaine_conference_csh">
+                        <img
+                            src="/assets/next-conference/next_conference.png"
+                            alt={t("home.conferenceTitle")}
+                            className="home-flyer-image"
+                        />
+                    </a>
                 </div>
                 <div className="home-flyer">
                     <p className="home-flyer-title">{t("home.programTitle").toUpperCase()}</p>
-                    <img
-                        src="/assets/program/program.png"
-                        alt={t("home.programTitle")}
-                        className="home-flyer-image"
-                    />
+                    <a href="/assets/program/program.png" download="programme_csh">
+                        <img
+                            src="/assets/program/program.png"
+                            alt={t("home.programTitle")}
+                            className="home-flyer-image"
+                        />
+                    </a>
                 </div>
             </div>
             <Divider/>
