@@ -11,9 +11,7 @@ const Home = (): ReactNode => {
         <div className="home-container">
             <div className="home-summary-container">
                 <div className="home-summary">
-                    <p>{t("home.title.1").toUpperCase()}</p>
-                    <p>{t("home.title.2").toUpperCase()}</p>
-                    <p>{t("home.title.3").toUpperCase()}</p>
+                    <p>{t("home.title").toUpperCase()}</p>
                 </div>
                 <a href="/#affiches" className="home-summary-button">{t("home.flyersButton").toUpperCase()}</a>
                 <div className="video-wrapper">
