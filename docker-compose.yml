@@ -1,9 +1,11 @@
 name: 'extranet-csh'
 
-deploy:
-  resources:
-    limits:
-      memory: 50M
+x-deploy: &deploy
+  deploy:
+    resources:
+      limits:
+        memory: 150M
+        cpus: '2'
 
 services:
   csh-backend:
