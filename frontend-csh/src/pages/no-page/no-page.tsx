@@ -7,11 +7,11 @@ const NoPage = (): ReactNode => {
 
   return (
       <div id="404" className="not-found">
-        <h1>404</h1>
+        <h1>{t("notFound.error")}</h1>
         <span>{t("notFound.caption")}</span>
         <br/>
         <br/>
-        <a href="/">
+        <a href="/" className="not-found-button">
           <span>{t("notFound.homeButton")?.toUpperCase()}</span>
         </a>
       </div>

@@ -1,14 +1,18 @@
 import {ReactNode} from "react";
-import {useTranslation} from "react-i18next";
+//import {useTranslation} from "react-i18next";
+import {Wip} from "../../components";
 
 const Conferences = (): ReactNode => {
-  const {t} = useTranslation();
+    /*const {t} = useTranslation();
 
-  return (
-      <div id="conferences">
-        {t("conferences")}
-      </div>
-  );
+    return (
+        <div id="conferences">
+          {t("conferences")}
+        </div>
+    );*/
+    return (
+        <Wip/>
+    );
 };
 
 export {Conferences};

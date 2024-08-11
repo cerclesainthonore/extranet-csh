@@ -21,7 +21,7 @@
 
 .home-flyer-image {
     max-width: 100%;
-    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    box-shadow: rgb(38, 57, 77) 0 20px 30px -10px;
     justify-self: center;
 }
 
@@ -59,12 +59,11 @@
     font-style: normal;
     position: absolute;
     z-index: 2;
-    font-size: 4rem;
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(2px);
     padding: 10px;
     border-radius: 10px;
-    box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+    box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0, rgba(255, 255, 255, 0.8) -6px -2px 16px 0;
     top: 80px;
 }
 
@@ -133,13 +132,16 @@
     }
 
     .home-flyer-title {
-        font-size: 42px;
+        font-size: 45px;
         letter-spacing: 8px;
     }
 
-
     .home-summary-container {
         height: calc(100vh - var(--csh-navbar-height-normal));
+    }
+
+    .home-summary {
+        font-size: 4rem;
     }
 }
 
@@ -160,11 +162,19 @@
     .home-summary-container {
         height: calc(100vh - var(--csh-navbar-height-big));
     }
+
+    .home-summary {
+        font-size: 3rem;
+    }
 }
 
 @media (max-width: 350px) {
     .home-flyer-title {
         font-size: 15px;
         letter-spacing: 4px;
+    }
+
+    .home-summary {
+        font-size: 2rem;
     }
 }

@@ -1,3 +1,38 @@
 .not-found {
     text-align: center;
+    background-color: var(--csh-color-1);
+    color: var(--csh-font-color-light);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.not-found-button {
+    transition: all 0.3s;
+    font-size: 1.2rem;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(2px);
+    border-radius: 45px;
+    border: 2px solid var(--csh-color-1-light);
+    color: white;
+    font-weight: 600;
+}
+
+.not-found-button:hover {
+    color: var(--csh-font-color-light);
+    background: var(--csh-color-1);
+}
+
+@media (min-width: 1050px) {
+    .not-found-button {
+        width: 30%;
+    }
+}
+
+@media (max-width: 1050px) {
+    .not-found-button {
+        width: 70%;
+    }
 }
