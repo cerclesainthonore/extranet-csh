@@ -4,10 +4,10 @@ import {Drawer, ModalClose} from "@mui/joy";
 
 import "./navbar.css";
 
-const parishUrl: string = import.meta.env.VITE_EXTRANET_PARISH_URL;
-const igUrl: string = import.meta.env.VITE_EXTRANET_INSTAGRAM_URL;
-const ytUrl: string = import.meta.env.VITE_EXTRANET_YOUTUBE_URL;
-const fbUrl: string = import.meta.env.VITE_EXTRANET_FACEBOOK_URL;
+const parishUrl: string = import.meta.env.VITE_EXTRANET_CSH_PARISH_URL;
+const igUrl: string = import.meta.env.VITE_EXTRANET_CSH_INSTAGRAM_URL;
+const ytUrl: string = import.meta.env.VITE_EXTRANET_CSH_YOUTUBE_URL;
+const fbUrl: string = import.meta.env.VITE_EXTRANET_CSH_FACEBOOK_URL;
 
 const Navbar = (): ReactNode => {
     const {t} = useTranslation();
