@@ -20,7 +20,7 @@ const Contact = (): ReactNode => {
     const [sendCooldown, setSendCooldown] = useState(false);
 
     const sendMail = useCallback(async () => {
-        if (name.length * email.length * subject.length * message.length === 0) {
+        if (name.trim().length * email.trim().length * subject.trim().length * message.trim().length === 0) {
             setEmptyError(true);
             return;
         }
@@ -28,11 +28,11 @@ const Contact = (): ReactNode => {
         setEmptyError(false);
         setSendCooldown(true);
 
-        const newSubject = `Question du site Cercle St-Honoré : ${subject}`;
-        const newMessage = `${message}\n\n-- \nCoordonnées de l'envoyeur :\n\t${name}\n\t${email}\n`;
+        const newSubject = `Question du site Cercle St-Honoré : ${subject.trim()}`;
+        const newMessage = `${message.trim()}\n\n-- \nCoordonnées de l'envoyeur :\n\t${name.trim()}\n\t${email.trim()}\n`;
 
 
-        await toast.promise(Controller.sendMail(supportMail, email, newSubject, newMessage, name), {
+        await toast.promise(Controller.sendMail(supportMail, email.trim(), newSubject, newMessage, name.trim()), {
                 pending: t("contact.feedback.pending"),
                 error: t("contact.feedback.notSent"),
                 success: t("contact.feedback.mailSent"),
