@@ -18,11 +18,13 @@ jobs:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
     - name: Deploy to Server
+      env:
+        MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
       run: |
-        ssh -o StrictHostKeyChecking=no csh@51.178.82.137 << 'EOF'
+        ssh -o StrictHostKeyChecking=no csh@51.178.82.137 << EOF
           cd /home/noah/cerclesainthonore/extranet-csh
           git pull origin master
-          echo "MAIL_PASSWORD=${{secrets.MAIL_PASSWORD}}" >> .env.secret
+          echo "MAIL_PASSWORD=$MAIL_PASSWORD" >> .env.secret
           docker compose down
           docker compose up -d
         EOF
