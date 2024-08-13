@@ -38,7 +38,9 @@ let transporter = createTransport({
     auth: {
         user: 'noreply@cerclesainthonore.fr',
         pass: process.env.MAIL_PASSWORD
-    }
+    },
+    debug: process.env.NODE_ENV !== 'production',
+    logging: true
 });
 
 app.get("/", (req, res) => {
