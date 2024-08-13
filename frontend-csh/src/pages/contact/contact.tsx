@@ -1,6 +1,6 @@
 import {ReactNode, useCallback, useState} from "react";
 import {useTranslation} from "react-i18next";
-import {Button, Input, Stack} from "@mui/joy";
+import {Button, FormControl, FormLabel, Input, Stack, Textarea} from "@mui/joy";
 import {Controller} from "../../controller/controller.ts";
 import {toast} from "react-toastify";
 
@@ -49,28 +49,41 @@ const Contact = (): ReactNode => {
                         sendMail();
                     }}
                 >
+                    <div className="contact-form-title">
+                        <span>{t("contact.title").toUpperCase()}</span>
+                    </div>
                     <div className="contact-form-wrapper">
                         <Stack spacing={1}>
-                            <Input
-                                onChange={(event) => setName(event.target.value)}
-                                placeholder={t("contact.mailForm.name")}
-                                required
-                            />
-                            <Input
-                                onChange={(event) => setEmail(event.target.value)}
-                                placeholder={t("contact.mailForm.email")}
-                                required
-                            />
-                            <Input
-                                onChange={(event) => setSubject(event.target.value)}
-                                placeholder={t("contact.mailForm.subject")}
-                                required
-                            />
-                            <Input
-                                onChange={(event) => setMessage(event.target.value)}
-                                placeholder={t("contact.mailForm.message")}
-                                required
-                            />
+                            <FormControl>
+                                <FormLabel>{t("contact.mailForm.name")}</FormLabel>
+                                <Input
+                                    onChange={(event) => setName(event.target.value)}
+                                    required
+                                />
+                            </FormControl>
+                            <FormControl>
+                                <FormLabel>{t("contact.mailForm.email")}</FormLabel>
+                                <Input
+                                    onChange={(event) => setEmail(event.target.value)}
+                                    required
+                                />
+                            </FormControl>
+                            <FormControl>
+                                <FormLabel>{t("contact.mailForm.subject")}</FormLabel>
+                                <Input
+                                    onChange={(event) => setSubject(event.target.value)}
+                                    required
+                                />
+                            </FormControl>
+                            <FormControl>
+                                <FormLabel>{t("contact.mailForm.message")}</FormLabel>
+                                <Textarea
+                                    onChange={(event) => setMessage(event.target.value)}
+                                    required
+                                    minRows={2}
+                                    maxRows={4}
+                                />
+                            </FormControl>
                             <Button
                                 type="submit"
                                 disabled={sendCooldown}>{t("contact.mailForm.submit")}

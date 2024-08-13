@@ -18,11 +18,12 @@
     "summary": "Le Cercle Saint-Honoré organise des conférences une fois par mois à l'église Saint Roch à Paris au sujet du le beau, du bien, du vrai de la France et de Dieu. C'est sur ce site ainsi que sur nos réseaux sociaux (lien cliquables en bas du site) que vous aurez toutes les informations nécessaires sur nos prochaines conférences !"
   },
   "contact": {
+    "title": "Nous contacter",
     "mailForm" : {
       "name": "Nom",
       "email": "Addresse mail",
-      "subject": "Objet du message",
-      "message": "Contenu du message",
+      "subject": "Objet",
+      "message": "Contenu",
       "submit": "Envoyer"
     },
     "feedback": {
