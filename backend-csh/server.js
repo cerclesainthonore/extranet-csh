@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const {log, error} = require("./utils/logging");
-const {createTransport} = require("nodemailer");
+const nodemailer = require("nodemailer");
 
 dotenv.config();
 
@@ -31,7 +31,7 @@ db.once("open", () => {
     log("Connected to MongoDB");
 });
 
-let transporter = createTransport({
+let transporter = nodemailer.createTransport({
     host: 'ssl0.ovh.net',
     port: 465,
     secure: true,
