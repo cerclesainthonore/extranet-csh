@@ -19,7 +19,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-// Connexion à MongoDB
+
 mongoose.connect(mongoURI);
 
 const db = mongoose.connection;
@@ -31,14 +31,19 @@ db.once("open", () => {
     log("Connected to MongoDB");
 });
 
+const feedbackEmail = 'noreply@cerclesainthonore.fr';
+
 let transporter = nodemailer.createTransport({
     host: 'ssl0.ovh.net',
     port: 465,
     secure: true,
     auth: {
-        user: 'noreply@cerclesainthonore.fr',
+        user: feedbackEmail,
         pass: process.env.MAIL_PASSWORD
     },
+    pooled: true,
+    maxMessages: Infinity,
+    maxConnections: 20,
     debug: process.env.NODE_ENV !== 'production',
     logging: true
 });
@@ -48,27 +53,41 @@ app.get("/", (req, res) => {
     res.send("Hello World!");
 });
 
-app.post("/send_mail", (req, res) => {
+app.post("/send_mail", async (req, res) => {
     log("Received POST /send_mail");
+    log("Request body: " + JSON.stringify(req.body));
 
-    let mailOptions = {
-        from: req.body.from,
+    // Envoi au support
+    await transporter.sendMail({
+        from: feedbackEmail,
         to: req.body.to,
         subject: req.body.subject,
         text: req.body.text,
-    };
-
-    log("Mail body: " + JSON.stringify(mailOptions));
-
-    transporter.sendMail(mailOptions, function(err, info){
+    }, function (err, info) {
         if (err) {
-            error(err.message);
+            error("Could not send mail to support: " + err.message);
             res.status(500).send({});
         } else {
-            log('Mail sent: ' + info.response);
-            res.status(200).send({});
+            log("Mail sent to support: " + info.response);
         }
     });
+
+    // Réponse à l'envoyeur
+    await transporter.sendMail({
+        from: feedbackEmail,
+        to: req.body.from,
+        subject: "Votre retour a bien été communiqué",
+        text: `Bonjour ${req.body.name},\n\nVotre tentative de contact via le site cerclesainthonore.fr a bien été prise en compte. Vous recevre une réponse sous peu. Si vous n'obtenez toujours pas de réponse après un moment, vous pouvez contacter le Cercle Saint-Honoré directement via l'addresse mail cerclesthonore@gmail.com.\n\nCordialement,\n`,
+    }, function (err, info) {
+        if (err) {
+            error("Could not send feedback mail: " + err.message);
+            res.status(500).send({});
+        } else {
+            log("Feedback mail sent: " + info.response);
+        }
+    });
+
+    res.status(200).send({});
 });
 
 app.listen(port, () => {

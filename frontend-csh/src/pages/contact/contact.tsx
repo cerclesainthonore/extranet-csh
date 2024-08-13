@@ -32,7 +32,7 @@ const Contact = (): ReactNode => {
         const newMessage = `${message}\n\n-- \nCoordonnées de l'envoyeur :\n\t${name}\n\t${email}\n`;
 
 
-        await toast.promise(Controller.sendMail(supportMail, email, newSubject, newMessage), {
+        await toast.promise(Controller.sendMail(supportMail, email, newSubject, newMessage, name), {
                 pending: t("contact.feedback.pending"),
                 error: t("contact.feedback.notSent"),
                 success: t("contact.feedback.mailSent"),
