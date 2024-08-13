@@ -13,13 +13,7 @@ services:
     build: backend-csh
     container_name: csh-backend
     restart: always
-    environment:
-      MONGODB_HOST: mongodb
-      MONGODB_USERNAME: csh-backend
-      MONGODB_PASSWORD: UNSECURE__CHANGE_THIS_PASSWORD
-      MONGODB_DATABASE: CSH
-      PORT: 3000
-      MAIL_PASSWORD: SECRET__REPLACE_WITH_ACTUAL_PASSWORD
+    env_file: './.env.secret'
     networks:
       - csh-back-net
       - csh-net
@@ -40,23 +34,6 @@ services:
       VITE_EXTRANET_CSH_SUPPORT_EMAIL: cerclesthonore@gmail.com
     networks:
       - csh-net
-  
-  mongodb:
-    <<: *deploy
-    image: mongo:7.0.5
-    container_name: mongodb
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: csh-backend
-      MONGO_INITDB_ROOT_PASSWORD: UNSECURE__CHANGE_THIS_PASSWORD
-      MONGO_INITDB_DATABASE: CSH
-    ports:
-      - "27012:27017"
-    networks:
-      - csh-back-net
-    volumes:
-      - ./mongodb-data:/data/db
-      - ./init_mongo.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
   
   nginx:
     <<: *deploy
