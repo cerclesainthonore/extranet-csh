@@ -19,6 +19,7 @@ services:
       MONGODB_PASSWORD: UNSECURE__CHANGE_THIS_PASSWORD
       MONGODB_DATABASE: CSH
       PORT: 3000
+      MAIL_PASSWORD: SECRET__REPLACE_WITH_ACTUAL_PASSWORD
     networks:
       - csh-back-net
       - csh-net
