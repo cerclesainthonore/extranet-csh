@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const {log, error} = require("./utils/logging");
+const {createTransport} = require("nodemailer");
 
 dotenv.config();
 
@@ -30,9 +31,42 @@ db.once("open", () => {
     log("Connected to MongoDB");
 });
 
+let transporter = createTransport({
+    host: 'ssl0.ovh.net',
+    port: 465,
+    secure: true,
+    auth: {
+        user: 'noreply@cerclesainthonore.fr',
+        pass: process.env.MAIL_PASSWORD
+    }
+});
+
 app.get("/", (req, res) => {
     log("Received GET /");
     res.send("Hello World!");
+});
+
+app.post("/send_mail", (req, res) => {
+    log("Received POST /send_mail");
+
+    let mailOptions = {
+        from: req.body.from,
+        to: req.body.to,
+        subject: req.body.subject,
+        text: req.body.text,
+    };
+
+    log("Mail body: " + JSON.stringify(mailOptions));
+
+    transporter.sendMail(mailOptions, function(err, info){
+        if (err) {
+            error(err.message);
+            res.status(500).send({});
+        } else {
+            log('Mail sent: ' + info.response);
+            res.status(200).send({});
+        }
+    });
 });
 
 app.listen(port, () => {
