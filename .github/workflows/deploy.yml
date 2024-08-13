@@ -3,8 +3,6 @@ name: Deploy to Server
 on:
   push:
     branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
 
 jobs:
   deploy:
@@ -24,6 +22,7 @@ jobs:
         ssh -o StrictHostKeyChecking=no csh@51.178.82.137 << 'EOF'
           cd /home/noah/cerclesainthonore/extranet-csh
           git pull origin master
+          echo "MAIL_PASSWORD=${{secrets.MAIL_PASSWORD}}" >> .env.secret
           docker compose down
           docker compose up -d
         EOF
