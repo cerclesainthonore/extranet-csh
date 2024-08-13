@@ -18,11 +18,19 @@
     "summary": "Le Cercle Saint-Honoré organise des conférences une fois par mois à l'église Saint Roch à Paris au sujet du le beau, du bien, du vrai de la France et de Dieu. C'est sur ce site ainsi que sur nos réseaux sociaux (lien cliquables en bas du site) que vous aurez toutes les informations nécessaires sur nos prochaines conférences !"
   },
   "contact": {
-    "name": "Nom",
-    "email": "Addresse mail",
-    "subject": "Objet du message (optionnel)",
-    "message": "Contenu du message",
-    "submit": "Envoyer"
+    "mailForm" : {
+      "name": "Nom",
+      "email": "Addresse mail",
+      "subject": "Objet du message",
+      "message": "Contenu du message",
+      "submit": "Envoyer"
+    },
+    "feedback": {
+      "emptyField": "Les coordonnées doivent être renseignées",
+      "notSent": "Le mail n'a pas pu etre envoyé",
+      "mailSent": "Mail envoyé",
+      "pending": "Envoi du mail..."
+    }
   },
   "wip": {
     "wip": "Maintenance en cours",
@@ -33,5 +41,8 @@
     "error": "Erreur 404",
     "caption": "La page à laquelle vous tentez d'accéder n'est pas répertoriée.",
     "homeButton": "Revenir à l'acceuil"
+  },
+  "footer": {
+    "credits": "Développé, déployé et maintenu par Noah Ravaux @ Cercle Saint-Honoré"
   }
 }
