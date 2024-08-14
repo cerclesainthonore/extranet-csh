@@ -20,8 +20,9 @@ jobs:
     - name: Deploy to Server
       env:
         MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
+        VPS_SSH_PORT: ${{ secrets.VPS_SSH_PORT }}
       run: |
-        ssh -o StrictHostKeyChecking=no csh@51.178.82.137 << EOF
+        ssh -o StrictHostKeyChecking=no csh@51.178.82.137 -p $VPS_SSH_PORT << EOF
           cd /home/noah/cerclesainthonore/extranet-csh
           git pull origin master
           echo "MAIL_PASSWORD=$MAIL_PASSWORD" >> .env.secret
