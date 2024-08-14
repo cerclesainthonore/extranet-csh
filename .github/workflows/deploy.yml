@@ -25,6 +25,7 @@ jobs:
         ssh -o StrictHostKeyChecking=no csh@51.178.82.137 -p $VPS_SSH_PORT << EOF
           cd /home/csh/cerclesainthonore/extranet-csh
           git pull origin master
+          touch .env.secret
           echo "MAIL_PASSWORD=$MAIL_PASSWORD" >> .env.secret
           docker compose down
           docker compose up -d
