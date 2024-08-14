@@ -45,6 +45,10 @@
     letter-spacing: 2px;
 }
 
+.MuiButton-root.contact-form-button {
+    background-color: var(--csh-color-1);
+}
+
 @media (min-width: 1050px) {
     .contact-form-title {
         font-size: 2rem;

@@ -24,7 +24,12 @@
       "email": "Addresse mail",
       "subject": "Objet",
       "message": "Contenu",
-      "submit": "Envoyer"
+      "submit": "Envoyer",
+      "modal": {
+        "title": "Envoyer à...",
+        "support": "Support Cercle Saint-Honoré",
+        "webmaster": "Webmaster"
+      }
     },
     "feedback": {
       "emptyField": "Les coordonnées doivent être renseignées",

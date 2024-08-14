@@ -1,12 +1,26 @@
 import {ReactNode, useCallback, useState} from "react";
 import {useTranslation} from "react-i18next";
-import {Button, FormControl, FormLabel, Input, Stack, Textarea} from "@mui/joy";
+import {
+    Button,
+    ButtonGroup,
+    FormControl,
+    FormLabel,
+    Input,
+    Modal,
+    ModalClose,
+    ModalDialog,
+    Stack,
+    Textarea
+} from "@mui/joy";
 import {Controller} from "../../controller/controller.ts";
 import {toast} from "react-toastify";
 
 import "./contact.css";
 
-const supportMail = import.meta.env.VITE_EXTRANET_CSH_SUPPORT_EMAIL;
+const mailDestinations = {
+    support: import.meta.env.VITE_EXTRANET_CSH_SUPPORT_EMAIL as string,
+    webmaster: import.meta.env.VITE_EXTRANET_CSH_WEBMASTER_EMAIL as string
+};
 
 const Contact = (): ReactNode => {
     const {t} = useTranslation();
@@ -19,7 +33,9 @@ const Contact = (): ReactNode => {
     const [emptyError, setEmptyError] = useState(false);
     const [sendCooldown, setSendCooldown] = useState(false);
 
-    const sendMail = useCallback(async () => {
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const sendMail = useCallback(async (to: string) => {
         if (name.trim().length * email.trim().length * subject.trim().length * message.trim().length === 0) {
             setEmptyError(true);
             return;
@@ -32,7 +48,7 @@ const Contact = (): ReactNode => {
         const newMessage = `${message.trim()}\n\n-- \nCoordonnées de l'envoyeur :\n\t${name.trim()}\n\t${email.trim()}\n`;
 
 
-        await toast.promise(Controller.sendMail(supportMail, email.trim(), newSubject, newMessage, name.trim()), {
+        await toast.promise(Controller.sendMail(to, email.trim(), newSubject, newMessage, name.trim()), {
                 pending: t("contact.feedback.pending"),
                 error: t("contact.feedback.notSent"),
                 success: t("contact.feedback.mailSent"),
@@ -46,7 +62,7 @@ const Contact = (): ReactNode => {
                 <form
                     onSubmit={(event) => {
                         event.preventDefault();
-                        sendMail();
+                        setModalOpen(true);
                     }}
                 >
                     <div className="contact-form-title">
@@ -86,7 +102,10 @@ const Contact = (): ReactNode => {
                             </FormControl>
                             <Button
                                 type="submit"
-                                disabled={sendCooldown}>{t("contact.mailForm.submit")}
+                                disabled={sendCooldown}
+                                className="contact-form-button"
+                            >
+                                {t("contact.mailForm.submit")}
                             </Button>
                         </Stack>
                     </div>
@@ -98,6 +117,27 @@ const Contact = (): ReactNode => {
             <div className="contact-details">
 
             </div>
+            <Modal
+                open={modalOpen}
+                onClose={() => setModalOpen(false)}
+            >
+                <ModalDialog>
+                    <ModalClose />
+                    <p>{t("contact.mailForm.modal.title")}</p>
+                    <ButtonGroup
+                        orientation="vertical"
+                    >
+                        {Object.keys(mailDestinations).map((key: string) => (
+                            <Button onClick={() => {
+                                sendMail(mailDestinations[key as keyof typeof mailDestinations]);
+                                setModalOpen(false);
+                            }}>
+                                {t(`contact.mailForm.modal.${key}`)}
+                            </Button>
+                        ))}
+                    </ButtonGroup>
+                </ModalDialog>
+            </Modal>
         </div>
     );
 };
