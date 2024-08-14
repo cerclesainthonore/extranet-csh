@@ -1,0 +1,47 @@
+.wip {
+    text-align: center;
+    color: var(--csh-color-1);
+    background-color: var(--csh-font-color-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.wip-button {
+    transition: all 0.3s;
+    font-size: 1.2rem;
+    backdrop-filter: blur(2px);
+    border-radius: 45px;
+    border: 2px solid var(--csh-color-1-light);
+    font-weight: 600;
+}
+
+.wip-button:hover {
+    color: var(--csh-font-color-light);
+    background: var(--csh-color-1);
+}
+
+.wip-image {
+    zoom: 50%;
+}
+
+@media (min-width: 1050px) {
+    .wip {
+        height: calc(100vh - var(--csh-navbar-height-normal) - var(--csh-footer-height-normal));
+    }
+
+    .wip-button {
+        width: 30%;
+    }
+}
+
+@media (max-width: 1050px) {
+    .wip {
+        height: calc(100vh - var(--csh-navbar-height-big) - var(--csh-footer-height-normal));
+    }
+
+    .wip-button {
+        width: 70%;
+    }
+}

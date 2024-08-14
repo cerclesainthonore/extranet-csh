@@ -1,0 +1,70 @@
+.contact-container {
+    display: flex;
+    flex-direction: row;
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-form {
+    min-height: 75px;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    display: block;
+    flex-direction: column;
+}
+
+.contact-form-wrapper {
+    background-color: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(2px);
+    max-width: 450px;
+    text-align: center;
+    padding-top: 50px;
+    padding-right: 40px;
+    padding-bottom: 50px;
+    padding-left: 40px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 20px 7px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    margin-top: 30px;
+    margin-right: 0px;
+    margin-bottom: 40px;
+    margin-left: 0px;
+}
+
+.contact-form-title {
+    padding-top: 20px;
+    text-align: center;
+    color: var(--csh-font-color-dark);
+    font-weight: 600;
+    font-size: 2rem;
+    letter-spacing: 2px;
+}
+
+.MuiButton-root.contact-form-button {
+    background-color: var(--csh-color-1);
+}
+
+@media (min-width: 1050px) {
+    .contact-form-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 1050px) {
+    .contact-container {
+        justify-content: center;
+    }
+
+    .contact-detail {
+        display: none;
+    }
+
+    .contact-form-title {
+        font-size: 1.5rem;
+    }
+}

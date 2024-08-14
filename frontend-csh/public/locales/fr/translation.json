@@ -1,0 +1,54 @@
+{
+  "navbar": {
+    "home": "Accueuil",
+    "about": "À propos",
+    "conferences": "Les conférences",
+    "parish": "La paroisse St-Roch",
+    "contact": "Nous contacter"
+  },
+  "home": {
+    "title": "Cercle Saint Honoré",
+    "subtitle": "Au sujet du le beau, du bien, du vrai de la France et de Dieu",
+    "aboutBtn": "En savoir plus",
+    "flyersButton": "Notre programme",
+    "conferenceTitle": "Notre prochaine conférence",
+    "programTitle": "Le programme de l'année"
+  },
+  "about": {
+    "summary": "Le Cercle Saint-Honoré organise des conférences une fois par mois à l'église Saint Roch à Paris au sujet du le beau, du bien, du vrai de la France et de Dieu. C'est sur ce site ainsi que sur nos réseaux sociaux (lien cliquables en bas du site) que vous aurez toutes les informations nécessaires sur nos prochaines conférences !"
+  },
+  "contact": {
+    "title": "Nous contacter",
+    "mailForm" : {
+      "name": "Nom",
+      "email": "Addresse mail",
+      "subject": "Objet",
+      "message": "Contenu",
+      "submit": "Envoyer",
+      "modal": {
+        "title": "Envoyer à...",
+        "support": "Support Cercle Saint-Honoré",
+        "webmaster": "Webmaster"
+      }
+    },
+    "feedback": {
+      "emptyField": "Les coordonnées doivent être renseignées",
+      "notSent": "Le mail n'a pas pu etre envoyé",
+      "mailSent": "Mail envoyé",
+      "pending": "Envoi du mail..."
+    }
+  },
+  "wip": {
+    "wip": "Maintenance en cours",
+    "caption": "Nous vous demandons un peu de patience, cette page sera très bientôt disponible.",
+    "homeButton": "Revenir à l'acceuil"
+  },
+  "notFound": {
+    "error": "Erreur 404",
+    "caption": "La page à laquelle vous tentez d'accéder n'est pas répertoriée.",
+    "homeButton": "Revenir à l'acceuil"
+  },
+  "footer": {
+    "credits": "Développé, déployé et maintenu par Noah Ravaux @ Cercle Saint-Honoré"
+  }
+}
