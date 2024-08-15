@@ -18,6 +18,8 @@ COPY ./nginx-custom.conf /etc/nginx/conf.d/default.conf
 
 USER root
 
+EXPOSE 8080
+
 ## Remove default nginx website
 RUN rm -rf /usr/share/nginx/html/*
 
