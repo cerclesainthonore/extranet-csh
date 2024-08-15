@@ -12,8 +12,9 @@ const port = "3000";
 // Middleware
 app.use(cors({
     origin: 'https://cerclesainthonore.fr',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization']
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+    allowedHeaders: 'Content-Type,Authorization'
 }));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
