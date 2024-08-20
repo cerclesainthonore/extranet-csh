@@ -2,24 +2,29 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const {log, error} = require("./utils/logging");
+const mongoose = require("mongoose");
+const newsletterRoutes = require('./routes/newsletter');
 const nodemailer = require("nodemailer");
 
 dotenv.config();
 
 const app = express();
-const port = "3000";
+const port = process.env.PORT || "3000";
+
+const mongoUri = `mongodb://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_HOST}:27017/${process.env.MONGODB_DATABASE}?authSource=admin`;
 
 // Middleware
 app.use(cors({
-    origin: 'https://cerclesainthonore.fr',
+    origin: process.env.NODE_ENV === 'production' ? 'https://cerclesainthonore.fr' : 'http://localhost:8000',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
     allowedHeaders: 'Content-Type,Authorization'
 }));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+app.use('/newsletter', newsletterRoutes);
 
-const feedbackEmail = 'noreply@cerclesainthonore.fr';
+const feedbackEmail = process.env.FEEDBACK_EMAIL;
 
 let transporter = nodemailer.createTransport({
     host: 'ssl0.ovh.net',
@@ -35,6 +40,10 @@ let transporter = nodemailer.createTransport({
     debug: process.env.NODE_ENV !== 'production',
     logging: true
 });
+
+mongoose.connect(mongoUri, {useNewUrlParser: true, useUnifiedTopology: true})
+    .then(() => log('Connected to MongoDB'))
+    .catch(err => error('Could not connect to MongoDB: ' + err));
 
 app.get("/", (req, res) => {
     log("Received GET /");

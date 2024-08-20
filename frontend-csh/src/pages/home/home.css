@@ -122,6 +122,15 @@
     display: none;
 }
 
+.newsletter-container {
+    display: flex;
+    flex-direction: row;
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+}
+
 @media (min-width: 1050px) {
     .home-flyer-container {
         flex-direction: row;

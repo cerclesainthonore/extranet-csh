@@ -3,6 +3,7 @@ import {Divider} from "@mui/joy";
 import {useTranslation} from "react-i18next";
 
 import "./home.css";
+import {NewsletterForm} from "../../components";
 
 const Home = (): ReactNode => {
     const {t} = useTranslation();
@@ -51,6 +52,9 @@ const Home = (): ReactNode => {
                 </div>
             </div>
             <Divider/>
+            <div className="newsletter-container">
+                <NewsletterForm/>
+            </div>
         </div>
     );
 };
