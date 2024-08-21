@@ -16,6 +16,7 @@ services:
     env_file: './.env.secret'
     environment:
       FEEDBACK_EMAIL: noreply@cerclesainthonore.fr
+      SUPPORT_EMAIL: cerclesthonore@gmail.com
       MONGODB_HOST: csh-mongodb
       MONGODB_USERNAME: csh-backend
       MONGODB_DATABASE: CSH
@@ -39,7 +40,6 @@ services:
       - csh-backend
 
   mongodb:
-    <<: *deploy
     image: mongo:7.0.5
     container_name: csh-mongodb
     restart: always
@@ -47,8 +47,6 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: csh-backend
       MONGO_INITDB_DATABASE: CSH
-    ports:
-      - "27012:27017"
     networks:
       - csh-back-net
     volumes:

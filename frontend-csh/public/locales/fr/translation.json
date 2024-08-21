@@ -19,7 +19,7 @@
   },
   "contact": {
     "title": "Nous contacter",
-    "mailForm" : {
+    "mailForm": {
       "name": "Nom",
       "email": "Addresse mail",
       "subject": "Objet",
@@ -36,6 +36,20 @@
       "notSent": "Le mail n'a pas pu etre envoyé",
       "mailSent": "Mail envoyé",
       "pending": "Envoi du mail..."
+    }
+  },
+  "newsletter": {
+    "title": "S'inscrire à notre liste de diffusion",
+    "name": "Nom",
+    "email": "Addresse mail",
+    "phone": "Numéro de téléphone (optionnel)",
+    "submit": "S'inscrire",
+    "feedback": {
+      "emptyField": "Les coordonnées doivent être renseignées",
+      "notSent": "L'inscription n'a pas pu être effectuée",
+      "success": "Coordonnées enregistrées",
+      "pending": "Traitement de la demande d'inscription...",
+      "duplicateMail": "Cette addresse mail a déjà été inscrite"
     }
   },
   "wip": {

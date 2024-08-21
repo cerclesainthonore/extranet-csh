@@ -10,6 +10,8 @@ import {
 import {Controller} from "../../controller/controller.ts";
 import {toast} from "react-toastify";
 
+interface IErrorFeedback {data: {response: {data: {code: number}}}}
+
 const NewsletterForm = (): ReactNode => {
     const {t} = useTranslation();
 
@@ -33,10 +35,18 @@ const NewsletterForm = (): ReactNode => {
 
         await toast.promise(Controller.subscribeToNewsletter(name.trim(), email.trim(), newPhone), {
                 pending: t("newsletter.feedback.pending"),
-                error: t("newsletter.feedback.notSent"),
+                error: {
+                    render({data}: IErrorFeedback) {
+                        if (data.response.data.code === 11000) {
+                            // duplicate email
+                            return t("newsletter.feedback.duplicateMail");
+                        }
+                        return t("newsletter.feedback.notSent");
+                    }
+                },
                 success: t("newsletter.feedback.success"),
             }
-        ).finally(() => setSendCooldown(false));
+        ).finally(() => setSendCooldown(false))
     }, [email, name, phone, t]);
 
     return (
