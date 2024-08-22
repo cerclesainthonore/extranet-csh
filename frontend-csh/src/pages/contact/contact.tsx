@@ -51,8 +51,7 @@ const Contact = (): ReactNode => {
                 pending: t("contact.feedback.pending"),
                 error: t("contact.feedback.notSent"),
                 success: t("contact.feedback.mailSent"),
-            },
-            {autoClose: 10000}
+            }
         ).finally(() => setSendCooldown(false));
     }, [email, message, name, subject, t]);
 

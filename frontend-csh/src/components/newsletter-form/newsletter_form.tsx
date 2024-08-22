@@ -47,8 +47,7 @@ const NewsletterForm = (): ReactNode => {
                     }
                 },
                 success: t("newsletter.feedback.success"),
-            },
-            {autoClose: 10000}
+            }
         ).finally(() => setSendCooldown(false))
     }, [email, name, phone, t]);
 
