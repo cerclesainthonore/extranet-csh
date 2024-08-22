@@ -10,7 +10,9 @@ import {
 import {Controller} from "../../controller/controller.ts";
 import {toast} from "react-toastify";
 
-interface IErrorFeedback {data: {response: {data: {code: number}}}}
+interface IErrorFeedback {
+    data: { response: { data: { code: number } } }
+}
 
 const NewsletterForm = (): ReactNode => {
     const {t} = useTranslation();
@@ -45,7 +47,8 @@ const NewsletterForm = (): ReactNode => {
                     }
                 },
                 success: t("newsletter.feedback.success"),
-            }
+            },
+            {autoClose: 10000}
         ).finally(() => setSendCooldown(false))
     }, [email, name, phone, t]);
 
