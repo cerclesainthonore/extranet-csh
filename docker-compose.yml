@@ -13,12 +13,11 @@ services:
     build: backend-csh
     container_name: csh-backend
     restart: always
-    env_file: './.env.secret'
     environment:
+      MAIL_PASSWORD: ${MAIL_PASSWORD}
       FEEDBACK_EMAIL: noreply@cerclesainthonore.fr
       SUPPORT_EMAIL: cerclesthonore@gmail.com
       MONGODB_HOST: csh-mongodb
-      MONGODB_USERNAME: csh-backend
       MONGODB_DATABASE: CSH
       PORT: 3000
     networks:
@@ -43,10 +42,10 @@ services:
     image: mongo:7.0.5
     container_name: csh-mongodb
     restart: always
-    env_file: './.env.secret'
     environment:
-      MONGO_INITDB_ROOT_USERNAME: csh-backend
       MONGO_INITDB_DATABASE: CSH
+    ports:
+      - "27012:27017"
     networks:
       - csh-back-net
     volumes:

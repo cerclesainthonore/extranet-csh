@@ -11,7 +11,7 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || "3000";
 
-const mongoUri = `mongodb://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_HOST}:27017/${process.env.MONGODB_DATABASE}?authSource=admin`;
+const mongoUri = `mongodb://${process.env.MONGODB_HOST}:27017/${process.env.MONGODB_DATABASE}`;
 
 // Middleware
 app.use(cors({
