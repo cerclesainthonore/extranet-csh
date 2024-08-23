@@ -14,7 +14,7 @@ services:
     container_name: csh-backend
     restart: always
     environment:
-      MAIL_PASSWORD: ${MAIL_PASSWORD}
+      MAIL_PASSWORD: ${CSH_MAIL_PASSWORD}
       FEEDBACK_EMAIL: noreply@cerclesainthonore.fr
       SUPPORT_EMAIL: cerclesthonore@gmail.com
       MONGODB_HOST: csh-mongodb
