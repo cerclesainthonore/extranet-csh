@@ -38,8 +38,14 @@ router.post('/subscribe', async (req, res) => {
 
         // send sheet to support
         log("Sending update newsletter list to support");
-        const data = await Newsletter.find({});
-        const excelBuffer = createExcel(data);
+        const data = await Newsletter.find({}, "-_id mail name phone createdAt").lean();
+        const formattedData = data.map(item => ({
+            mail: item.mail,
+            name: item.name,
+            phone: item.phone,
+            createdAt: new Date(item.createdAt).toLocaleDateString('fr-FR'),
+        }));
+        const excelBuffer = createExcel(formattedData);
 
         await sendMail({
             from: "Cercle Saint-Honoré <" + feedbackEmail + ">",
