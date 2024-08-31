@@ -44,8 +44,6 @@ services:
     restart: always
     environment:
       MONGO_INITDB_DATABASE: CSH
-    ports:
-      - "27012:27017"
     networks:
       - csh-back-net
     volumes:

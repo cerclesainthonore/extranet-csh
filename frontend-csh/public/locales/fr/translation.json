@@ -43,6 +43,19 @@
     "name": "Nom",
     "email": "Addresse mail",
     "phone": "Numéro de téléphone (optionnel)",
+    "discoveredVia": {
+      "title": "Comment avez-vous entendu parler du Cercle Saint-Honoré ?",
+      "options": {
+        "unspecified": "Non renseigné",
+        "wordOfMouth": "Bouche à oreille",
+        "poster": "Affiches",
+        "shop": "Échoppe",
+        "instagram": "Instagram",
+        "youtube": "Youtube",
+        "facebook": "Facebook",
+        "other": "Autre"
+      }
+    },
     "submit": "S'inscrire",
     "feedback": {
       "emptyField": "Les coordonnées doivent être renseignées",

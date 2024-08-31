@@ -7,12 +7,13 @@ const createExcel = require("../utils/excel");
 
 async function sendUpdatedTable(subject, text, callback) {
     log("Sending update newsletter list to support");
-    const data = await Newsletter.find({}, "-_id mail name phone createdAt").lean();
+    const data = await Newsletter.find({}, "-_id mail name phone createdAt discoveredVia").lean();
     const formattedData = data.map(item => ({
         mail: item.mail,
         name: item.name,
         phone: item.phone,
         createdAt: new Date(item.createdAt).toLocaleDateString('fr-FR'),
+        discoveredVia: item.discoveredVia
     }));
     const excelBuffer = createExcel(formattedData);
 
@@ -34,7 +35,7 @@ router.post('/subscribe', async (req, res) => {
     log("Received POST /newsletter/subscribe");
     log("Request body: " + JSON.stringify(req.body));
 
-    const {name, mail, phone} = req.body;
+    const {name, mail, phone, discoveredVia} = req.body;
 
     if (!name || !mail) {
         error("Could not register subscriber: Name and email are required");
@@ -42,7 +43,7 @@ router.post('/subscribe', async (req, res) => {
     }
 
     try {
-        const newSubscriber = new Newsletter({name, mail, phone});
+        const newSubscriber = new Newsletter({name, mail, phone, discoveredVia});
         await newSubscriber.save();
         log("Subscribed successfully");
 

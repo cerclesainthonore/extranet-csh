@@ -1,17 +1,10 @@
-.newsletter-form {
-    min-height: 75px;
-    padding-top: 10px;
-    padding-right: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    display: block;
-    flex-direction: column;
+.newsletter-form-other {
+    margin-top: 10px;
 }
 
 .newsletter-form-wrapper {
     background-color: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(2px);
-    max-width: 450px;
     text-align: center;
     padding-top: 50px;
     padding-right: 40px;
@@ -33,7 +26,6 @@
     text-align: center;
     color: var(--csh-font-color-dark);
     font-weight: 600;
-    font-size: 1rem;
     letter-spacing: 2px;
 }
 
@@ -42,7 +34,13 @@
 }
 
 @media (min-width: 1050px) {
+    .newsletter-form-title {
+        font-size: 2rem;
+    }
 }
 
 @media (max-width: 1050px) {
+    .newsletter-form-title {
+        font-size: 1rem;
+    }
 }
