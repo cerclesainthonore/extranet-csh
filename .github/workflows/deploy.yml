@@ -19,14 +19,12 @@ jobs:
 
     - name: Deploy to Server
       env:
-        MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
+        CSH_MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
         VPS_SSH_PORT: ${{ secrets.VPS_SSH_PORT }}
       run: |
         ssh -o StrictHostKeyChecking=no csh@51.178.82.137 -p $VPS_SSH_PORT << EOF
           cd /home/csh/cerclesainthonore/extranet-csh
           git pull origin master
-          touch .env.secret
-          echo "MAIL_PASSWORD=$MAIL_PASSWORD" >> .env.secret
           docker compose down --remove-orphans --rmi all
           docker compose up -d
         EOF

@@ -47,7 +47,6 @@ const Contact = (): ReactNode => {
         const newSubject = `Question du site Cercle St-Honoré : ${subject.trim()}`;
         const newMessage = `${message.trim()}\n\n-- \nCoordonnées de l'envoyeur :\n\t${name.trim()}\n\t${email.trim()}\n`;
 
-
         await toast.promise(Controller.sendMail(to, email.trim(), newSubject, newMessage, name.trim()), {
                 pending: t("contact.feedback.pending"),
                 error: t("contact.feedback.notSent"),

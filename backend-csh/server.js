@@ -2,39 +2,32 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const {log, error} = require("./utils/logging");
-const nodemailer = require("nodemailer");
+const mongoose = require("mongoose");
+const newsletterRoutes = require("./routes/newsletter");
+const {sendMail, feedbackEmail} = require("./utils/mail");
 
 dotenv.config();
 
 const app = express();
-const port = "3000";
+const port = process.env.PORT || "3000";
+
+const mongoUser = process.env.NODE_ENV === "production" ? "" : "admin:admin@";
+const mongoUri = `mongodb://${mongoUser}${process.env.MONGODB_HOST}:27017/${process.env.MONGODB_DATABASE}${mongoUser.length > 0 ? "?authSource=admin" : ""}`;
 
 // Middleware
 app.use(cors({
-    origin: 'https://cerclesainthonore.fr',
+    origin: process.env.NODE_ENV === 'production' ? 'https://cerclesainthonore.fr' : 'http://localhost:5173',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
     allowedHeaders: 'Content-Type,Authorization'
 }));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+app.use('/newsletter', newsletterRoutes);
 
-const feedbackEmail = 'noreply@cerclesainthonore.fr';
-
-let transporter = nodemailer.createTransport({
-    host: 'ssl0.ovh.net',
-    port: 465,
-    secure: true,
-    auth: {
-        user: feedbackEmail,
-        pass: process.env.MAIL_PASSWORD
-    },
-    pooled: true,
-    maxMessages: Infinity,
-    maxConnections: 20,
-    debug: process.env.NODE_ENV !== 'production',
-    logging: true
-});
+mongoose.connect(mongoUri)
+    .then(() => log('Connected to MongoDB'))
+    .catch(err => error('Could not connect to MongoDB: ' + err));
 
 app.get("/", (req, res) => {
     log("Received GET /");
@@ -46,8 +39,8 @@ app.post("/send_mail", async (req, res) => {
     log("Request body: " + JSON.stringify(req.body));
 
     // Envoi au support
-    await transporter.sendMail({
-        from: feedbackEmail,
+    await sendMail({
+        from: "Cercle Saint-Honoré <" + feedbackEmail + ">",
         to: req.body.to,
         subject: req.body.subject,
         text: req.body.text,
@@ -61,8 +54,8 @@ app.post("/send_mail", async (req, res) => {
     });
 
     // Réponse à l'envoyeur
-    await transporter.sendMail({
-        from: feedbackEmail,
+    await sendMail({
+        from: "Cercle Saint-Honoré <" + feedbackEmail + ">",
         to: req.body.from,
         subject: "Votre retour a bien été communiqué",
         text: `Bonjour ${req.body.name},\n\nVotre tentative de contact via le site cerclesainthonore.fr a bien été prise en compte. Vous recevre une réponse sous peu. Si vous n'obtenez toujours pas de réponse après un moment, vous pouvez contacter le Cercle Saint-Honoré directement via l'addresse mail cerclesthonore@gmail.com.\n\nCordialement,\n`,

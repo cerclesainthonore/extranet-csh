@@ -12,4 +12,13 @@ export class Controller {
       name
     });
   }
+
+  public static async subscribeToNewsletter(name: string, mail: string, discoveredVia: string, phone?: string): Promise<void> {
+    return axios.post(Controller.apiUrl + "/newsletter/subscribe", {
+      name,
+      mail,
+      phone,
+      discoveredVia
+    })
+  }
 }

@@ -1,0 +1,46 @@
+.newsletter-form-other {
+    margin-top: 10px;
+}
+
+.newsletter-form-wrapper {
+    background-color: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(2px);
+    text-align: center;
+    padding-top: 50px;
+    padding-right: 40px;
+    padding-bottom: 50px;
+    padding-left: 40px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 20px 7px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    margin-top: 10px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+}
+
+.newsletter-form-title {
+    padding-top: 20px;
+    text-align: center;
+    color: var(--csh-font-color-dark);
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.MuiButton-root.newsletter-form-button {
+    background-color: var(--csh-color-1);
+}
+
+@media (min-width: 1050px) {
+    .newsletter-form-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 1050px) {
+    .newsletter-form-title {
+        font-size: 1rem;
+    }
+}
