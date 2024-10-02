@@ -65,6 +65,19 @@
       "duplicateMail": "Cette addresse mail a déjà été inscrite"
     }
   },
+  "conferences": {
+    "tags": {
+      "liturgy": "Liturgie",
+      "history": "Histoire",
+      "philosophy": "Philosophie",
+      "art": "Art",
+      "apologetics": "Apologétique",
+      "spirituality": "Spiritualité",
+      "interview": "Entretien",
+      "book": "Livre",
+      "self_improvement": "Développement personnel"
+    }
+  },
   "wip": {
     "wip": "Maintenance en cours",
     "caption": "Nous vous demandons un peu de patience, cette page sera très bientôt disponible.",

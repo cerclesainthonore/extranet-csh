@@ -131,7 +131,7 @@
     justify-content: center;
 }
 
-@media (min-width: 1050px) {
+@media (min-width: 1200px) {
     .home-flyer-container {
         flex-direction: row;
     }
@@ -154,7 +154,7 @@
     }
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 1200px) {
     .home-flyer-container {
         flex-direction: column;
     }

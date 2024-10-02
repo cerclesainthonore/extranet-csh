@@ -33,13 +33,13 @@
     background-color: var(--csh-color-1);
 }
 
-@media (min-width: 1050px) {
+@media (min-width: 1200px) {
     .newsletter-form-title {
         font-size: 2rem;
     }
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 1200px) {
     .newsletter-form-title {
         font-size: 1rem;
     }

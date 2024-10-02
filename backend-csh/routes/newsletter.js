@@ -1,6 +1,6 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const Newsletter = require('../models/Newsletter');
+const Newsletter = require("../models/Newsletter");
 const {log, error} = require("../utils/logging");
 const {sendMail, feedbackEmail, supportEmail} = require("../utils/mail");
 const createExcel = require("../utils/excel");
@@ -12,7 +12,7 @@ async function sendUpdatedTable(subject, text, callback) {
         mail: item.mail,
         name: item.name,
         phone: item.phone,
-        createdAt: new Date(item.createdAt).toLocaleDateString('fr-FR'),
+        createdAt: new Date(item.createdAt).toLocaleDateString("fr-FR"),
         discoveredVia: item.discoveredVia
     }));
     const excelBuffer = createExcel(formattedData);
@@ -24,14 +24,14 @@ async function sendUpdatedTable(subject, text, callback) {
         text,
         attachments: [
             {
-                filename: 'Liste_de_diffusion_CSH.xlsx',
+                filename: "Liste_de_diffusion_CSH.xlsx",
                 content: excelBuffer,
             },
         ],
     }, callback);
 }
 
-router.post('/subscribe', async (req, res) => {
+router.post("/subscribe", async (req, res) => {
     log("Received POST /newsletter/subscribe");
     log("Request body: " + JSON.stringify(req.body));
 
@@ -39,7 +39,7 @@ router.post('/subscribe', async (req, res) => {
 
     if (!name || !mail) {
         error("Could not register subscriber: Name and email are required");
-        return res.status(400).json({error: 'Name and email are required'});
+        return res.status(400).json({error: "Name and email are required"});
     }
 
     try {
@@ -74,10 +74,10 @@ router.post('/subscribe', async (req, res) => {
                 }
             });
 
-        res.status(201).json({message: 'Subscribed successfully'});
+        res.status(201).json({message: "Subscribed successfully"});
     } catch (err) {
         error("Could not register subscriber: " + err.message);
-        res.status(500).json({code: err.code, error: 'Failed to subscribe'});
+        res.status(500).json({code: err.code, error: "Failed to subscribe"});
     }
 });
 

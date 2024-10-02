@@ -1,6 +1,20 @@
 import axios from "axios";
 
-export class Controller {
+interface IConferenceProps {
+  id: string;
+  title: string;
+  author: string;
+  date: string;
+  tags: string[];
+  coverFilename: string | undefined;
+}
+
+interface IConferenceDetailProps extends IConferenceProps {
+  summary: string;
+  link?: string;
+}
+
+class Controller {
   public static apiUrl: string = import.meta.env.VITE_EXTRANET_CSH_API_URL;
 
   public static async sendMail(to: string, from: string, subject: string, text: string, name: string): Promise<void> {
@@ -21,4 +35,30 @@ export class Controller {
       discoveredVia
     })
   }
+
+  public static async getConferenceTags(): Promise<string[]> {
+    const response = await axios.get(Controller.apiUrl + "/conferences/tags");
+    if (response.status !== 200) {
+      throw new Error('Network response was not ok');
+    }
+    return response.data;
+  }
+
+  public static async getAllConferences(): Promise<IConferenceProps[]> {
+    const response = await axios.get(Controller.apiUrl + "/conferences");
+    if (response.status !== 200) {
+      throw new Error('Network response was not ok');
+    }
+    return response.data;
+  }
+
+  public static async getConferenceDetail(id: string): Promise<IConferenceDetailProps> {
+    const response = await axios.get(Controller.apiUrl + "/conferences/" + id);
+    if (response.status !== 200) {
+      throw new Error('Network response was not ok');
+    }
+    return response.data;
+  }
 }
+
+export {Controller, type IConferenceProps, type IConferenceDetailProps};
