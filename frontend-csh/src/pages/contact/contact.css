@@ -49,6 +49,16 @@
     background-color: var(--csh-color-1);
 }
 
+.map {
+    padding-top: 70px;
+    align-self: center;
+    margin: 50px;
+    & > iframe {
+        border-radius: 10px;
+        border: solid 4px var(--csh-color-1);
+    }
+}
+
 @media (min-width: 1200px) {
     .contact-form-title {
         font-size: 2rem;
@@ -56,6 +66,10 @@
 }
 
 @media (max-width: 1200px) {
+    .map {
+        display: none;
+    }
+
     .contact-container {
         justify-content: center;
     }

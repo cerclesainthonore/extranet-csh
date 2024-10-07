@@ -1,0 +1,13 @@
+.bookshelf-filters {
+    display: flex;
+    width: 100%;
+}
+
+.bookshelf-filters > div {
+    margin: 10px;
+    width: 100%;
+}
+
+.bookshelf {
+    zoom: 120%;
+}

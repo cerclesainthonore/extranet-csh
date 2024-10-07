@@ -14,6 +14,7 @@ import {
 } from "@mui/joy";
 import {Controller} from "../../controller/controller.ts";
 import {toast} from "react-toastify";
+import {Map} from "../../components";
 
 import "./contact.css";
 
@@ -137,6 +138,7 @@ const Contact = (): ReactNode => {
                     </ButtonGroup>
                 </ModalDialog>
             </Modal>
+            <Map/>
         </div>
     );
 };

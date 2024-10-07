@@ -27,7 +27,7 @@ const TagSelect = ({tags, ...props}: {tags: string[]} & SelectProps<string, true
                     },
                 }}
             >
-                {tags.map((tag) => <Option value={tag}>{t("conferences.tags." + tag)}</Option>)}
+                {tags.map(tag => <Option value={tag}>{t("conferences.tags." + tag)}</Option>)}
             </Select>
         </>
     );

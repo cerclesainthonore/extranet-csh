@@ -3,7 +3,7 @@ import axios from "axios";
 interface IConferenceProps {
   id: string;
   title: string;
-  author: string;
+  authors: string[];
   date: string;
   tags: string[];
   coverFilename: string | undefined;
@@ -34,14 +34,6 @@ class Controller {
       phone,
       discoveredVia
     })
-  }
-
-  public static async getConferenceTags(): Promise<string[]> {
-    const response = await axios.get(Controller.apiUrl + "/conferences/tags");
-    if (response.status !== 200) {
-      throw new Error('Network response was not ok');
-    }
-    return response.data;
   }
 
   public static async getAllConferences(): Promise<IConferenceProps[]> {

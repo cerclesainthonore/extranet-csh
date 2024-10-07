@@ -6,6 +6,7 @@ import {getRootCssStyles} from './cssUtils.js';
 import {initials} from "./bookshelf_functions.ts";
 
 import "./bookshelf.css";
+import {Tooltip} from "@mui/joy";
 
 function getRandomInt(min: number, max: number) {
     min = Math.ceil(min);
@@ -31,10 +32,10 @@ const availableColors = [
 
 const Book = ({
                   title,
-                  author,
+                  authors,
                   coverFilename,
               }: IConferenceProps) => {
-    const [randomHeight] = useState(getRandomInt(220, 280))
+    const [randomHeight] = useState(getRandomInt(230, 280))
     const [randomPattern] = useState(randomChoice<string>(availablePatterns));
     const [randomColor] = useState(randomChoice<string>(availableColors));
 
@@ -51,15 +52,17 @@ const Book = ({
                     backgroundColor: randomColor,
                 }}
             >
-                <span className="spine-title">{title}</span>
-                <span
-                    className="spine-author"
-                    style={{
-                        left: `${initials(author).length > 2 ? "10" : "20"}%`
-                    }}
-                >
+                <div className="spine-author-list">
+                    {authors.map(author => <span
+                        className="spine-author"
+                        style={{
+                            left: `${initials(author).length > 2 ? "10" : "20"}%`
+                        }}
+                    >
                     {initials(author)}
-                </span>
+                </span>)}
+                </div>
+                <span className="spine-title">{title}</span>
             </div>
             <div
                 className="side top"
@@ -70,7 +73,7 @@ const Book = ({
             <div
                 className="side cover"
                 style={{
-                    backgroundImage: `url("/assets/conferences/${coverFilename ?? "notfound.png"}")`,
+                    backgroundImage: `url("/assets/conferences/${coverFilename ?? "notfound"}.png")`,
                     height: `${randomHeight}px`,
                     top: `${280 - randomHeight}px`
                 }}
@@ -79,10 +82,27 @@ const Book = ({
     );
 }
 
-const Bookshelf = ({conferenceList}: {conferenceList: IConferenceProps[]}): ReactNode => {
+const Bookshelf = ({conferenceList}: { conferenceList: IConferenceProps[] }): ReactNode => {
     return (
         <div className="bookshelf">
-            {conferenceList.map((conference) => <Book {...conference}/>)}
+            {conferenceList.map((conference) =>
+                <Tooltip
+                    // className="book-tooltip"
+                    // variant="outlined"
+                    // placement="bottom-end"
+                    // enterDelay={500}
+                    // followCursor={true}
+                    // arrow={true}
+                    title={
+                        <div>
+                            <span>{conference.authors.join(", ")}</span>
+                            <span>{conference.title}</span>
+                        </div>
+                    }
+                >
+                    <Book {...conference}/>
+                </Tooltip>
+            )}
         </div>
     );
 }
