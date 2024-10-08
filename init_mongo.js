@@ -193,3 +193,59 @@ insertConference({
     tags: ["debate", "liturgy", "religion"],
     coverFilename: "2024_02_15-liturgie_debat"
 });
+
+insertConference({
+    title: "En arrivant au paradis",
+    authors: ["Richard de Seze"],
+    date: new Date("2024-03-21"),
+    summary: "Le jeudi 21 mars, à 19h30 à Saint-Roch, le Cercle Saint-Honoré aura la joie d'accueillir Richard de Seze pour présenter son dernier ouvrage « En arrivant au Paradis »\n" +
+        "Consultant en communication, Richard de Seze est aussi journaliste culture pour plusieurs périodiques. Il a récemment publié, aux Éditions du Cerf, Les 33 meilleures blagues de Jésus, avec Basile de Koch.",
+    link: "https://www.youtube.com/embed/sb6By8c5HGw?si=GJVExl1bQaQtJgJn",
+    tags: ["spirituality", "comics", "religion"],
+    coverFilename: "2024_03_21-paradis"
+});
+
+insertConference({
+    title: "Reggae catholique",
+    authors: ["Les Guetteurs"],
+    date: new Date("2024-04-05"),
+    summary: "Le vendredi 5 avril, à 19h30 en l'Eglise Saint-Roch, le Cercle Saint-Honoré aura la joie d'accueillir Les Guetteurs pour un concert et témoignages.\n" +
+        "Les Guetteurs sont nés il y a 15 ans : en avril 2007, lorsque Fratoun, alors âgé de douze ans, a eu dans le cœur de partager sa foi par la musique. De concert en concert, de chanson en chanson, d’album en album, le groupe s’est peu à peu formé, professionnalisé, pour enfin devenir ce qu’il est aujourd’hui : une bande de cinq musiciens expérimentés et sonorisés par un ingénieur d’exception, une équipe joyeuse capable de soulever les foules. Leurs mélodies sont entraînantes, leurs rythmes chaloupés, leurs textes poétiques. Leurs chansons atteignent leur but : toucher les cœurs.\n" +
+        "En juin 2023, ils reviennent avec l’album Roi : onze chansons qui transmettent un message d’espérance, de foi et d’amour. Onze chansons portées par un rythme : le reggae. Onze chansons qui parlent d’un ROI : le Christ. Ce nouvel opus est percutant et groovy, poétique et sensible. Et surtout rempli de JOIE",
+    link: "",
+    tags: ["interview", "testimony", "religion", "spirituality"],
+    coverFilename: "2024_04_05-reggae_catholique"
+});
+
+insertConference({
+    title: "Notre-Dame : Une affaire d'État",
+    authors: ["Didier Rykner"],
+    date: new Date("2024-04-05"),
+    summary: "Le vendredi 12 avril, à 19h30 en l’Eglise Saint-Roch, le Cercle Saint-Honoré aura la joie d'accueillir Didier Rykner pour présenter son dernier ouvrage « Notre-Dame : Une affaire d'État ».\n" +
+        "Didier Rykner est le fondateur et directeur de la rédaction de La Tribune de l’Art, un média influent engagé au service de la défense du patrimoine. Journaliste d’investigation, né à Paris, de parents parisiens, il combat depuis des années le traitement infligé au patrimoine. Il a publié aux Belles Lettres La Disparition de Paris (2022).",
+    link: "",
+    tags: ["book", "politics"],
+    coverFilename: "2024_04_05-reggae_catholique"
+});
+
+insertConference({
+    title: "Sur l'islam",
+    authors: ["Rémi Brague"],
+    date: new Date("2024-06-14"),
+    summary: "Le vendredi 14 juin, à 19h30 en l’Eglise Saint-Roch, le Cercle Saint-Honoré aura la joie d'accueillir Rémi Brague pour présenter son dernier ouvrage « Sur l'islam ».\n" +
+        "Né en 1947, Rémi Brague est spécialiste de philosophie antique et médiévale. Professeur émérite à la Sorbonne et à l’université Louis-et-Maximilien de Munich, Brague explore les traditions philosophiques arabes, juives et gréco-latines, et combat les lieux communs sur les religions.",
+    link: "https://www.youtube.com/embed/RWw5rLXQLgc?si=j7JdEjdSJefcGxO0",
+    tags: ["book", "religion", "history"],
+    coverFilename: "2024_06_14-islam"
+});
+
+insertConference({
+    title: "La Rose Blanche : des résistants chrétiens contre le nazisme",
+    authors: ["Henri Peter"],
+    date: new Date("2024-09-13"),
+    summary: "Le vendredi 13 septembre, à 19h30 en l’Eglise Saint-Roch, le Cercle Saint-Honoré aura la joie d'accueillir Henri Peter pour présenter son dernier ouvrage «La Rose Blanche : des résistants chrétiens contre le nazisme».\n" +
+        "Henri Peter, originaire de Colmar, est enseignant retraité. Il a contribué à la redécouverte de l’écrivain catholique allemand Gertrud von Le Fort dont il a traduit plusieurs ouvrages (La Femme éternelle, L’Enfant étranger, Écrits de résistance, parus aux éditions Via Romana).",
+    link: "https://www.youtube.com/embed/LbLwoualr1w?si=yLX5xuVol2Y5r4xZ",
+    tags: ["book", "testimony", "history", "spirituality"],
+    coverFilename: "2024_09_13-rose_blanche"
+});
