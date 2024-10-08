@@ -69,7 +69,7 @@ const Conferences = (): ReactNode => {
                 <div className="bookshelf-filters">
                     <TagSelect
                         value={selectedTags}
-                        tags={Array.from(tagSet)}
+                        tags={Array.from(tagSet).sort()}
                         onChange={(_event, value) => setSelectedTags(value)}
                         {...(selectedTags.length > 0 && {
                             endDecorator: (

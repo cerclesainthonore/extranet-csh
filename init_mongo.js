@@ -30,6 +30,46 @@ function insertConference({
 }
 
 insertConference({
+    title: "Mourir vivant & La voie des hommes",
+    authors: ["Philippe de Maistre"],
+    date: new Date("2022-10-07"),
+    summary: "",
+    link: "",
+    tags: ["book", "biography", "religion", "testimony"],
+    coverFilename: "2022_10_07-mourir_vivant"
+});
+
+insertConference({
+    title: "Benoit XVI : Une vie (tomes 1 & 2)",
+    authors: ["Peter Seewald", "Clément Imbert"],
+    date: new Date("2022-11-18"),
+    summary: "",
+    link: "https://www.youtube.com/embed/VePlU3MgyVQ?si=d9HJQv5ROZkOWPzQ",
+    tags: ["book", "biography", "religion", "testimony"],
+    coverFilename: "2022_11_18-benoit_xvi"
+});
+
+insertConference({
+    title: "L'Amérique empire",
+    authors: ["Nikola Mirković"],
+    date: new Date("2022-12-02"),
+    summary: "",
+    link: "",
+    tags: ["book", "history", "politics", "geopolitics"],
+    coverFilename: "2022_12_02-amerique"
+});
+
+insertConference({
+    title: "Conversations avec le Président",
+    authors: ["Samuel Pruvot"],
+    date: new Date("2023-02-10"),
+    summary: "",
+    link: "",
+    tags: ["book", "religion", "politics"],
+    coverFilename: "2023_02_10-conversations_president"
+});
+
+insertConference({
     title: "Le chant liturgique",
     authors: ["Fabrice Hadjadj"],
     date: new Date("2023-03-10"),
@@ -245,7 +285,7 @@ insertConference({
     date: new Date("2024-09-13"),
     summary: "Le vendredi 13 septembre, à 19h30 en l’Eglise Saint-Roch, le Cercle Saint-Honoré aura la joie d'accueillir Henri Peter pour présenter son dernier ouvrage «La Rose Blanche : des résistants chrétiens contre le nazisme».\n" +
         "Henri Peter, originaire de Colmar, est enseignant retraité. Il a contribué à la redécouverte de l’écrivain catholique allemand Gertrud von Le Fort dont il a traduit plusieurs ouvrages (La Femme éternelle, L’Enfant étranger, Écrits de résistance, parus aux éditions Via Romana).",
-    link: "https://www.youtube.com/embed/LbLwoualr1w?si=yLX5xuVol2Y5r4xZ",
+    link: "", // Il n'y a que l'incipit sur youtube
     tags: ["book", "testimony", "history", "spirituality"],
     coverFilename: "2024_09_13-rose_blanche"
 });
