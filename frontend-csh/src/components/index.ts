@@ -3,3 +3,8 @@ export * from "./footer/footer";
 export * from "./layout/layout.tsx";
 export * from "./wip/wip.tsx";
 export * from "./newsletter-form/newsletter_form.tsx";
+export * from "./bookshelf/bookshelf.tsx";
+export * from "./tag-select/tag-select.tsx";
+export * from "./author-select/author-select.tsx";
+export * from "./map/map.tsx";
+export * from "./conference-modal/conference_modal.tsx";

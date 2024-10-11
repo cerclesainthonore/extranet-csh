@@ -69,7 +69,7 @@
     background-color: var(--csh-color-1);
 }
 
-@media (min-width: 1050px) {
+@media (min-width: 1200px) {
     .navbar-container {
         height: var(--csh-navbar-height-normal);
     }
@@ -114,7 +114,7 @@
     }
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 1200px) {
     .navbar-no-menu {
         display: none;
     }
@@ -151,7 +151,7 @@
         flex-direction: row;
         align-items: center;
         justify-content: center;
-        padding-left: 50px;
+        padding-left: 35px;
     }
 
     .navbar-social-container .navbar-social {

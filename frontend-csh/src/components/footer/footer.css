@@ -9,10 +9,21 @@
 
 .footer-text {
     color: var(--csh-footer-font-color);
+    font-size: 18px;
 }
 
-@media (max-width: 350px) {
+.footer-legal-link {
+    color: var(--csh-footer-font-color);
+    text-decoration: underline;
+    font-size: 15px;
+}
+
+@media (max-width: 360px) {
     .footer-text {
-        font-size: 15px;
+        font-size: 12px;
+    }
+
+    .footer-legal-link {
+        font-size: 10px;
     }
 }

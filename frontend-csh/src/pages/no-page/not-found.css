@@ -25,13 +25,13 @@
     background: var(--csh-color-1);
 }
 
-@media (min-width: 1050px) {
+@media (min-width: 1200px) {
     .not-found-button {
         width: 30%;
     }
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 1200px) {
     .not-found-button {
         width: 70%;
     }

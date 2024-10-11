@@ -8,6 +8,7 @@ const parishUrl: string = import.meta.env.VITE_EXTRANET_CSH_PARISH_URL;
 const igUrl: string = import.meta.env.VITE_EXTRANET_CSH_INSTAGRAM_URL;
 const ytUrl: string = import.meta.env.VITE_EXTRANET_CSH_YOUTUBE_URL;
 const fbUrl: string = import.meta.env.VITE_EXTRANET_CSH_FACEBOOK_URL;
+const liUrl: string = import.meta.env.VITE_EXTRANET_CSH_LINKEDIN_URL;
 
 const Navbar = (): ReactNode => {
     const {t} = useTranslation();
@@ -53,6 +54,9 @@ const Navbar = (): ReactNode => {
                 </a>
                 <a href={fbUrl} target="_blank" className="navbar-social">
                     <img src="/assets/social/facebook.svg" alt="Facebook" width={25} height={25}/>
+                </a>
+                <a href={liUrl} target="_blank" className="navbar-social">
+                    <img src="/assets/social/linkedin.svg" alt="LinkedIn" width={28} height={28}/>
                 </a>
             </div>
         </>

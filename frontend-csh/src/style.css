@@ -127,14 +127,14 @@ body {
     position: relative;
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 1200px) {
     .main-body {
         min-height: calc(100vh - var(--csh-footer-height-normal));
         padding-top: var(--csh-navbar-height-big);
     }
 }
 
-@media (min-width: 1050px) {
+@media (min-width: 1200px) {
     .main-body {
         min-height: calc(100vh - var(--csh-footer-height-normal));
         padding-top: var(--csh-navbar-height-normal);

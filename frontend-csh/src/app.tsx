@@ -5,6 +5,7 @@ import React from "react";
 import i18n from "i18next";
 import {I18nextProvider} from "react-i18next";
 import {RouterProvider} from "react-router";
+import {Legal} from "./pages/legal/legal.tsx";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: `/contact`,
         element: <Contact/>
+      },
+      {
+        path: `/legal`,
+        element: <Legal/>
       }
     ]
   },

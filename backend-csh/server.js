@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const {log, error} = require("./utils/logging");
 const mongoose = require("mongoose");
 const newsletterRoutes = require("./routes/newsletter");
+const conferencesRoutes = require("./routes/conferences");
 const {sendMail, feedbackEmail} = require("./utils/mail");
 
 dotenv.config();
@@ -24,6 +25,7 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use('/newsletter', newsletterRoutes);
+app.use('/conferences', conferencesRoutes);
 
 mongoose.connect(mongoUri)
     .then(() => log('Connected to MongoDB'))

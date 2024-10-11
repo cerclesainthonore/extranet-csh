@@ -65,6 +65,30 @@
       "duplicateMail": "Cette addresse mail a déjà été inscrite"
     }
   },
+  "conferences": {
+    "placeholders": {
+      "tags": "Catégories",
+      "authors": "Intervenants"
+    },
+    "tags": {
+      "liturgy": "Liturgie",
+      "history": "Histoire",
+      "philosophy": "Philosophie",
+      "art": "Art",
+      "apologetics": "Apologétique",
+      "spirituality": "Spiritualité",
+      "interview": "Entretien",
+      "book": "Livre",
+      "self_improvement": "Développement personnel",
+      "testimony": "Témoignage",
+      "geopolitics": "Géopolitique",
+      "religion": "Religion",
+      "politics": "Politique",
+      "debate": "Débat",
+      "comics": "Bande dessinée",
+      "biography": "Biographie"
+    }
+  },
   "wip": {
     "wip": "Maintenance en cours",
     "caption": "Nous vous demandons un peu de patience, cette page sera très bientôt disponible.",
@@ -76,6 +100,35 @@
     "homeButton": "Revenir à l'acceuil"
   },
   "footer": {
-    "credits": "Développé, déployé et maintenu par Noah Ravaux @ Cercle Saint-Honoré"
+    "credits": "Développé, déployé et maintenu par Noah Ravaux dans le cadre du Cercle Saint-Honoré",
+    "legal": "Mentions légales"
+  },
+  "legal": {
+    "webmaster": {
+      "title": "Webmaster",
+      "name": "Noah Ravaux",
+      "mail": "Email"
+    },
+    "support": {
+      "title": "Support CSH",
+      "name": "Louis Bilbao",
+      "mail": "Email"
+    },
+    "hosting": {
+      "title": "Hébergement",
+      "name": "OVH",
+      "address": "2 rue Kellermann, 59100 Roubaix",
+      "phone": "Téléphone",
+      "mail": "Email"
+    },
+    "privacy": {
+      "title": "Politique de Protection des Données Personnelles (RGPD)",
+      "description": "Conformément au Règlement Général sur la Protection des Données (RGPD), nous vous informons que les données personnelles collectées via ce site, telles que les noms, adresses e-mail et numéros de téléphone fournis lors de l'inscription à notre newsletter ou du remplissage de notre formulaire de contact, sont traitées uniquement à des fins de gestion de la newsletter, de réponse à vos demandes et de diagnostic d'affluence sur le site. Vos données ne seront ni vendues ni partagées avec des tiers sans votre consentement. Pour exercer vos droits d'accès, de rectification ou de suppression de vos données, contactez-nous aux addresses renseignées plus haut."
+    },
+    "controller": {
+      "title": "Responsable du traitement des données",
+      "name": "Cercle Saint-Honoré, representé par Noah Ravaux en tant que Webmaster",
+      "mail": "Email"
+    }
   }
 }
