@@ -1,8 +1,8 @@
-import {ReactNode, Suspense, useEffect, useState} from "react";
-import {AuthorSelect, Bookshelf, TagSelect} from "../../components";
+import {ReactNode, Suspense, useCallback, useEffect, useState} from "react";
+import {AuthorSelect, Bookshelf, ConferenceModal, TagSelect} from "../../components";
 import {Divider, IconButton, ModalClose} from "@mui/joy";
 import {FallingLines} from "react-loader-spinner";
-import {Controller, IConferenceProps} from "../../controller/controller.ts";
+import {Controller, IConferenceDetailProps, IConferenceProps} from "../../controller/controller.ts";
 import {sortByLastName} from "../../components/bookshelf/bookshelf_functions.ts";
 
 import "./conferences.css";
@@ -16,6 +16,13 @@ const containsAll = (arr1: string[], arr2: string[]) => {
 }
 
 const Conferences = (): ReactNode => {
+    const [selectedConference, setSelectedConference] = useState<IConferenceDetailProps | null>(null);
+    const handleSelectConference = useCallback((id: string) => {
+        Controller.getConferenceDetail(id).then((data) => {
+            setSelectedConference(data);
+        })
+    }, []);
+
     const [conferenceList, setConferenceList] = useState<Array<IConferenceProps>>([]);
     useEffect(() => {
         Controller.getAllConferences().then((conferences: Array<IConferenceProps>) => {
@@ -114,7 +121,16 @@ const Conferences = (): ReactNode => {
                         })}
                     />
                 </div>
-                <Bookshelf conferenceList={displayedConferences}/>
+                <Bookshelf
+                    conferenceList={displayedConferences}
+                    onConferenceClick={handleSelectConference}
+                />
+                {selectedConference && (
+                    <ConferenceModal
+                        {...selectedConference}
+                        onClose={() => setSelectedConference(null)}
+                    />
+                )}
             </Suspense>
         </div>
     );

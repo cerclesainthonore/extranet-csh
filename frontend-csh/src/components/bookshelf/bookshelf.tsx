@@ -33,8 +33,9 @@ const availableColors = [
 const Book = ({
                   title,
                   authors,
-                  coverFilename,
-              }: IConferenceProps) => {
+                  //coverFilename,
+                  onBookClick
+              }: IConferenceProps & { onBookClick: () => void }) => {
     const [randomHeight] = useState(getRandomInt(230, 280))
     const [randomPattern] = useState(randomChoice<string>(availablePatterns));
     const [randomColor] = useState(randomChoice<string>(availableColors));
@@ -42,6 +43,7 @@ const Book = ({
     return (
         <div
             className="book"
+            onClick={onBookClick}
         >
             <div
                 className="side spine"
@@ -73,7 +75,7 @@ const Book = ({
             <div
                 className="side cover"
                 style={{
-                    backgroundImage: `url("/assets/conferences/${coverFilename ?? "notfound"}.png")`,
+                    backgroundImage: `url("/assets/conferences/${/*coverFilename ?? */"notfound"}.png")`,
                     height: `${randomHeight}px`,
                     top: `${280 - randomHeight}px`
                 }}
@@ -82,17 +84,23 @@ const Book = ({
     );
 }
 
-const Bookshelf = ({conferenceList}: { conferenceList: IConferenceProps[] }): ReactNode => {
+const Bookshelf = ({
+                       conferenceList,
+                       onConferenceClick
+                   }: {
+    conferenceList: IConferenceProps[],
+    onConferenceClick: (id: string) => void
+}): ReactNode => {
     return (
         <div className="bookshelf">
             {conferenceList.map((conference) =>
                 <Tooltip
-                    // className="book-tooltip"
-                    // variant="outlined"
-                    // placement="bottom-end"
-                    // enterDelay={500}
-                    // followCursor={true}
-                    // arrow={true}
+                    className="book-tooltip"
+                    variant="outlined"
+                    placement="bottom-end"
+                    enterDelay={500}
+                    followCursor={true}
+                    arrow={true}
                     title={
                         <div>
                             <span>{conference.authors.join(", ")}</span>
@@ -100,7 +108,10 @@ const Bookshelf = ({conferenceList}: { conferenceList: IConferenceProps[] }): Re
                         </div>
                     }
                 >
-                    <Book {...conference}/>
+                    <Book
+                        {...conference}
+                        onBookClick={() => onConferenceClick(conference._id)}
+                    />
                 </Tooltip>
             )}
         </div>

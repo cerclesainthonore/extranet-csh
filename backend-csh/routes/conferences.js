@@ -21,10 +21,10 @@ router.get("/:id", async (req, res) => {
     const id = req.params.id;
     log("Received GET /conferences/" + id);
 
-    const data = await Conferences.findOne({_id: id}).lean();
-    data.date = new Date(data.date).toLocaleDateString("fr-FR");
-
     try {
+        const data = await Conferences.findOne({_id: id}).lean();
+        data.date = new Date(data.date).toLocaleDateString("fr-FR");
+
         res.status(200).json(data);
     } catch (err) {
         error("Could not get categories: " + err.message);

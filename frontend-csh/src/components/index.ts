@@ -7,3 +7,4 @@ export * from "./bookshelf/bookshelf.tsx";
 export * from "./tag-select/tag-select.tsx";
 export * from "./author-select/author-select.tsx";
 export * from "./map/map.tsx";
+export * from "./conference-modal/conference_modal.tsx";

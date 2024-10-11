@@ -1,7 +1,7 @@
 import axios from "axios";
 
 interface IConferenceProps {
-  id: string;
+  _id: string;
   title: string;
   authors: string[];
   date: string;

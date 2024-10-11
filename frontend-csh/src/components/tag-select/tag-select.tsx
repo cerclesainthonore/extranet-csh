@@ -8,6 +8,7 @@ const TagSelect = ({tags, ...props}: {tags: string[]} & SelectProps<string, true
         <>
             <Select
                 {...props}
+                placeholder={t("conferences.placeholders.tags")}
                 multiple
                 renderValue={(selected) => (
                     <Box sx={{ display: 'flex', gap: '0.25rem' }}>
