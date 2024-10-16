@@ -8,6 +8,8 @@ import {initials} from "./bookshelf_functions.ts";
 import "./bookshelf.css";
 import {Tooltip} from "@mui/joy";
 
+const imagesUrl: string = import.meta.env.VITE_EXTRANET_CSH_IMAGES_URL;
+
 function getRandomInt(min: number, max: number) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -75,7 +77,7 @@ const Book = ({
             <div
                 className="side cover"
                 style={{
-                    backgroundImage: `url("/assets/conferences/${/*coverFilename ?? */"notfound"}.png")`,
+                    backgroundImage: `url("${imagesUrl}/conferences/${/*coverFilename ?? */"notfound"}.png")`,
                     height: `${randomHeight}px`,
                     top: `${280 - randomHeight}px`
                 }}
