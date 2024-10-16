@@ -1,5 +1,6 @@
 import {Modal, ModalClose, Typography, Box, Divider, Chip, ModalDialog} from "@mui/joy";
 import {IConferenceDetailProps} from "../../controller/controller.ts";
+import {useTranslation} from "react-i18next";
 
 const ConferenceModal = ({
                              _id,
@@ -11,6 +12,7 @@ const ConferenceModal = ({
                              link,
                              onClose
                          }: IConferenceDetailProps & { onClose: () => void }) => {
+    const {t} = useTranslation();
 
     const renderYouTubeEmbed = (link: string | undefined) => {
         return link ? (
@@ -51,7 +53,7 @@ const ConferenceModal = ({
                     <Box sx={{display: 'flex', flexWrap: 'wrap', gap: '0.5rem', mb: 2}}>
                         {tags.map((tag) => (
                             <Chip key={tag} size="sm" variant="soft" color="primary">
-                                {tag}
+                                {t("conferences.tags." + tag)}
                             </Chip>
                         ))}
                     </Box>

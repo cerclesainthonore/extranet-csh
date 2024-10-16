@@ -15,6 +15,16 @@ const containsAll = (arr1: string[], arr2: string[]) => {
     return arr2.every(item => arr1.includes(item));
 }
 
+const Loading = (): ReactNode => {
+    return (
+        <FallingLines
+            color="#06265e"
+            width="100"
+            visible={true}
+        />
+    );
+}
+
 const Conferences = (): ReactNode => {
     const [selectedConference, setSelectedConference] = useState<IConferenceDetailProps | null>(null);
     const handleSelectConference = useCallback((id: string) => {
@@ -66,14 +76,8 @@ const Conferences = (): ReactNode => {
     return (
         <div id="conferences">
             <Divider/>
-            <Suspense fallback={
-                <FallingLines
-                    color="#06265e"
-                    width="100"
-                    visible={true}
-                />}
-            >
-                <div className="bookshelf-filters">
+            <div className="bookshelf-filters">
+                <Suspense fallback={<Loading/>}>
                     <TagSelect
                         value={selectedTags}
                         tags={Array.from(tagSet).sort()}
@@ -91,12 +95,14 @@ const Conferences = (): ReactNode => {
                                         setSelectedTags([]);
                                     }}
                                 >
-                                    <ModalClose />
+                                    <ModalClose/>
                                 </IconButton>
                             ),
                             indicator: null,
                         })}
                     />
+                </Suspense>
+                <Suspense fallback={<Loading/>}>
                     <AuthorSelect
                         value={selectedAuthor ?? ""}
                         authors={sortByLastName(Array.from(authorSet))}
@@ -114,24 +120,29 @@ const Conferences = (): ReactNode => {
                                         setSelectedAuthor(null);
                                     }}
                                 >
-                                    <ModalClose />
+                                    <ModalClose/>
                                 </IconButton>
                             ),
                             indicator: null,
                         })}
                     />
-                </div>
+                </Suspense>
+            </div>
+            <Suspense fallback={<Loading/>}>
                 <Bookshelf
                     conferenceList={displayedConferences}
                     onConferenceClick={handleSelectConference}
                 />
-                {selectedConference && (
+            </Suspense>
+            {selectedConference && (
+                <Suspense fallback={<Loading/>}>
                     <ConferenceModal
                         {...selectedConference}
                         onClose={() => setSelectedConference(null)}
                     />
-                )}
-            </Suspense>
+                </Suspense>
+            )}
+
         </div>
     );
 };
