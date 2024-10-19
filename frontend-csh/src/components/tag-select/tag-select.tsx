@@ -19,7 +19,7 @@ const TagSelect = ({tags, ...props}: {tags: string[]} & SelectProps<string, true
                         ))}
                     </Box>
                 )}
-                sx={{ minWidth: '15rem' }}
+                sx={{ minWidth: '5rem' }}
                 slotProps={{
                     listbox: {
                         sx: {

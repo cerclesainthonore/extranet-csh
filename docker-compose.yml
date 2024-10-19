@@ -4,8 +4,8 @@ x-deploy: &deploy
   deploy:
     resources:
       limits:
-        memory: 150M
-        cpus: '0.01'
+        memory: 300M
+        cpus: '0.1'
 
 services:
   csh-backend:
