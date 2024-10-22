@@ -1,0 +1,19 @@
+@media (min-width: 1200px) {
+    .MuiTypography-root.csh-conferences-modal-large {
+        font-size: 1.25rem
+    }
+
+    .MuiTypography-root.csh-conferences-modal-medium {
+        font-size: 1rem
+    }
+}
+
+@media (max-width: 1200px) {
+    .MuiTypography-root.csh-conferences-modal-large {
+        font-size: 1rem
+    }
+
+    .MuiTypography-root.csh-conferences-modal-medium {
+        font-size: 0.75rem
+    }
+}

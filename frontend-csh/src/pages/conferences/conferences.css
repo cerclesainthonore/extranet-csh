@@ -4,10 +4,17 @@
 }
 
 .bookshelf-filters > div {
-    margin: 10px;
     width: 100%;
 }
 
-.bookshelf {
-    zoom: 120%;
+@media (min-width: 1200px) {
+    .bookshelf {
+        zoom: 120%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .bookshelf-filters {
+        flex-direction: column;
+    }
 }

@@ -9,7 +9,7 @@ const AuthorSelect = ({authors, ...props}: {authors: string[]} & SelectProps<str
             <Select
                 {...props}
                 placeholder={t("conferences.placeholders.authors")}
-                sx={{ minWidth: '15rem' }}
+                sx={{ minWidth: '5rem' }}
                 slotProps={{
                     listbox: {
                         sx: {

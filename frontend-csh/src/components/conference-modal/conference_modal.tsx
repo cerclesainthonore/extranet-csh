@@ -2,6 +2,8 @@ import {Modal, ModalClose, Typography, Box, Divider, Chip, ModalDialog} from "@m
 import {IConferenceDetailProps} from "../../controller/controller.ts";
 import {useTranslation} from "react-i18next";
 
+import "./conferences_modal.css";
+
 const ConferenceModal = ({
                              _id,
                              title,
@@ -37,16 +39,16 @@ const ConferenceModal = ({
         >
             <ModalDialog>
                 <ModalClose/>
-                <Box sx={{p: 2}}>
-                    <Typography component="h2" level="h4" sx={{mb: 1}}>
+                <Box sx={[{p: 2}, { overflow: 'scroll' }]}>
+                    <Typography component="h2" level="h4" sx={{mb: 1}} className="csh-conferences-modal-large">
                         {title}
                     </Typography>
 
-                    <Typography sx={{mb: 2}}>
+                    <Typography sx={{mb: 2}} className="csh-conferences-modal-medium">
                         {authors.join(", ")}
                     </Typography>
 
-                    <Typography sx={{mb: 1}}>
+                    <Typography sx={{mb: 1}} className="csh-conferences-modal-medium">
                         Date: {date}
                     </Typography>
 
@@ -60,11 +62,13 @@ const ConferenceModal = ({
 
                     <Divider sx={{my: 2}}/>
 
-                    <Typography sx={{mb: 2}}>
-                        {summary}
-                    </Typography>
+                    <div className="csh-conferences-modal-summary">
+                        <Typography sx={{mb: 2}} className="csh-conferences-modal-medium">
+                            {summary}
+                        </Typography>
 
-                    {renderYouTubeEmbed(link)}
+                        {renderYouTubeEmbed(link)}
+                    </div>
                 </Box>
             </ModalDialog>
         </Modal>

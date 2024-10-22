@@ -1,9 +1,11 @@
 import {ReactNode} from "react";
 import {Divider} from "@mui/joy";
 import {useTranslation} from "react-i18next";
+import {NewsletterForm} from "../../components";
 
 import "./home.css";
-import {NewsletterForm} from "../../components";
+
+const imagesUrl: string = import.meta.env.VITE_EXTRANET_CSH_IMAGES_URL;
 
 const Home = (): ReactNode => {
     const {t} = useTranslation();
@@ -32,9 +34,9 @@ const Home = (): ReactNode => {
             <div className="home-flyer-container" id="affiches">
                 <div className="home-flyer">
                     <p className="home-flyer-title">{t("home.conferenceTitle").toUpperCase()}</p>
-                    <a href="/assets/next-conference/next_conference.png" download="prochaine_conference_csh">
+                    <a href={imagesUrl + "/next_conference.png"} download="prochaine_conference_csh">
                         <img
-                            src="/assets/next-conference/next_conference.png"
+                            src={imagesUrl + "/next_conference.png"}
                             alt={t("home.conferenceTitle")}
                             className="home-flyer-image"
                         />
@@ -42,9 +44,9 @@ const Home = (): ReactNode => {
                 </div>
                 <div className="home-flyer">
                     <p className="home-flyer-title">{t("home.programTitle").toUpperCase()}</p>
-                    <a href="/assets/program/program.png" download="programme_csh">
+                    <a href={imagesUrl + "/program.png"} download="programme_csh">
                         <img
-                            src="/assets/program/program.png"
+                            src={imagesUrl + "/program.png"}
                             alt={t("home.programTitle")}
                             className="home-flyer-image"
                         />
