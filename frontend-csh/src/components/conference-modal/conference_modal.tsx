@@ -39,7 +39,7 @@ const ConferenceModal = ({
         >
             <ModalDialog>
                 <ModalClose/>
-                <Box sx={{p: 2}}>
+                <Box sx={[{p: 2}, { overflow: 'scroll' }]}>
                     <Typography component="h2" level="h4" sx={{mb: 1}} className="csh-conferences-modal-large">
                         {title}
                     </Typography>
