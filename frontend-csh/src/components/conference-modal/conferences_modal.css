@@ -1,7 +1,3 @@
-.csh-conferences-modal-summary {
-    overflow: scroll;
-}
-
 @media (min-width: 1200px) {
     .MuiTypography-root.csh-conferences-modal-large {
         font-size: 1.25rem
