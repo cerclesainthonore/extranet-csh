@@ -37,6 +37,8 @@ services:
       - csh-net
     depends_on:
       - csh-backend
+    volumes:
+      - /var/www/cerclesainthonore/assets/images/:/usr/share/nginx/html/assets/images/
 
   mongodb:
     image: mongo:7.0.5
