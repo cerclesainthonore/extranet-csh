@@ -98,7 +98,6 @@ const NewsletterForm = (): ReactNode => {
                                 <FormLabel>{t("newsletter.phone")}</FormLabel>
                                 <Input
                                     onChange={(event) => setPhone(event.target.value)}
-                                    required
                                 />
                             </FormControl>
                             <FormControl>

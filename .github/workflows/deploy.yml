@@ -24,7 +24,7 @@ jobs:
       run: |
         ssh -o StrictHostKeyChecking=no csh@51.178.82.137 -p $VPS_SSH_PORT << EOF
           cd /home/csh/cerclesainthonore/extranet-csh
-          git clean -f
+          git stash
           git pull origin master
           export CSH_MAIL_PASSWORD=$CSH_MAIL_PASSWORD
           docker compose down --remove-orphans --rmi all
