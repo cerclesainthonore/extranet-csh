@@ -1,0 +1,20 @@
+services:
+  mongodb:
+    image: mongo:7.0.5
+    container_name: csh-mongodb
+    restart: always
+    environment:
+      MONGO_INITDB_DATABASE: CSH
+    ports:
+      - 27017:27017
+    networks:
+      - csh-back-net
+    volumes:
+      - ./mongodb-data:/data/db
+      - ./init_mongo.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+
+networks:
+  csh-back-net:
+
+volumes:
+  mongodb-data:
