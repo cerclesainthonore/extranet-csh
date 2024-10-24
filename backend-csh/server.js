@@ -1,19 +1,21 @@
+const { Config } = require('./config')
 const express = require("express");
 const cors = require("cors");
-const dotenv = require("dotenv");
 const {log, error} = require("./utils/logging");
 const mongoose = require("mongoose");
 const newsletterRoutes = require("./routes/newsletter");
 const conferencesRoutes = require("./routes/conferences");
 const {sendMail, feedbackEmail} = require("./utils/mail");
 
-dotenv.config();
 
 const app = express();
-const port = process.env.PORT || "3000";
+const port = Config.port;
 
-const mongoUser = process.env.NODE_ENV === "production" ? "" : "admin:admin@";
-const mongoUri = `mongodb://${mongoUser}${process.env.MONGODB_HOST}:27017/${process.env.MONGODB_DATABASE}${mongoUser.length > 0 ? "?authSource=admin" : ""}`;
+const mongoUser = Config.mongoUser;
+const mongoUri = `mongodb://${mongoUser !== "" ? `${mongoUser}@`:""}${Config.mongoHost}:27017/${Config.mongoCollection}${mongoUser !== "" ? "?authSource=admin" : ""}`;
+mongoose.connect(mongoUri)
+    .then(() => log('Connected to MongoDB'))
+    .catch(err => error('Could not connect to MongoDB: ' + err));
 
 // Middleware
 app.use(cors({
@@ -27,9 +29,6 @@ app.use(express.urlencoded({extended: true}));
 app.use('/newsletter', newsletterRoutes);
 app.use('/conferences', conferencesRoutes);
 
-mongoose.connect(mongoUri)
-    .then(() => log('Connected to MongoDB'))
-    .catch(err => error('Could not connect to MongoDB: ' + err));
 
 app.get("/", (req, res) => {
     log("Received GET /");
