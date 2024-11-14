@@ -289,3 +289,25 @@ insertConference({
     tags: ["book", "testimony", "history", "spirituality"],
     coverFilename: "2024_09_13-rose_blanche"
 });
+
+insertConference({
+    title: "Écologie tragique",
+    authors: ["Fabrice Hadjadj"],
+    date: new Date("2024-10-11"),
+    summary: "Le vendredi 11 octobre, à 19h30 en l’Eglise Saint-Roch, le Cercle Saint-Honoré aura la joie d'accueillir Fabrice Hadjadj pour présenter son dernier ouvrage «Écologie tragique».\n" +
+        "Fabrice Hadjadj est diplômé de l'Institut d'études politiques de Paris et agrégé de philosophie. Dramaturge, musicien, auteur jeunesse, il est aussi l'auteur de nombreux essais, qui en font l'un des philosophes contemporains les plus influents.",
+    link: "",
+    tags: ["book", "philosophy"],
+    coverFilename: "2024_10_11-ecologie_tragique"
+});
+
+insertConference({
+    title: "L'évidence : itinéraire d'un incroyant converti",
+    authors: ["Lucas Tierny"],
+    date: new Date("2024-11-08"),
+    summary: "Le vendredi 8 novembre, à 19h30 en l’Eglise Saint-Roch, le Cercle Saint-Honoré aura la joie d'accueillir Lucas Tierny pour présenter son ouvrage « L’évidence ».\n" +
+        "Lucas Tierny est diplômé de l'EMLYON. Consultant en stratégie, il accompagne les dirigeants dans leurs projets de transformations. Membre de cercles de réflexions politiques et socio-économiques, engagé dans des activités caritatives, il accompagne régulièrement des jeunes à discerner dans leurs vies personnelles et leurs orientations. Il a participé à la fondation de l'Escale, un événement dédié aux personnes en quête spirituelle.",
+    link: "",
+    tags: ["book", "spirituality", "testimony", "apologetics"],
+    coverFilename: "2024_11_08-evidence"
+});
