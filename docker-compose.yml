@@ -19,7 +19,7 @@ services:
       SUPPORT_EMAIL: cerclesthonore@gmail.com
       MONGODB_HOST: csh-mongodb
       MONGODB_DATABASE: CSH
-      ORIGIN: https://cerclesainthonore.fr
+      ORIGIN: https://cerclesainthonore.fr,https://www.cerclesainthonore.fr
       PORT: 3000
     networks:
       - csh-back-net
