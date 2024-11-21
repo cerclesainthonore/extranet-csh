@@ -19,7 +19,7 @@ mongoose.connect(mongoUri)
 
 // Middleware
 app.use(cors({
-    origin: process.env.NODE_ENV === 'production' ? 'https://cerclesainthonore.fr' : 'http://localhost:5173',
+    origin: process.env.NODE_ENV === 'production' ? Config.origin : 'http://localhost:5173',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
     allowedHeaders: 'Content-Type,Authorization'
