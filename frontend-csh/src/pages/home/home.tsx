@@ -2,6 +2,7 @@ import {ReactNode} from "react";
 import {Divider} from "@mui/joy";
 import {useTranslation} from "react-i18next";
 import {NewsletterForm} from "../../components";
+import {Recommendations} from "../../components/recommendations/recommendations.tsx";
 
 import "./home.css";
 
@@ -53,6 +54,8 @@ const Home = (): ReactNode => {
                     </a>
                 </div>
             </div>
+            <Divider/>
+            <Recommendations/>
             <Divider/>
             <div className="newsletter-container">
                 <NewsletterForm/>

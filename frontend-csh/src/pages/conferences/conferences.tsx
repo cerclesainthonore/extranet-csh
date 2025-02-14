@@ -142,7 +142,6 @@ const Conferences = (): ReactNode => {
                     />
                 </Suspense>
             )}
-
         </div>
     );
 };

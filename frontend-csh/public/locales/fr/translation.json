@@ -89,6 +89,9 @@
       "biography": "Biographie"
     }
   },
+  "recommendations": {
+    "title": "Le Cercle vous recommande"
+  },
   "wip": {
     "wip": "Maintenance en cours",
     "caption": "Nous vous demandons un peu de patience, cette page sera très bientôt disponible.",
