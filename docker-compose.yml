@@ -15,11 +15,12 @@ services:
     restart: always
     environment:
       MAIL_PASSWORD: ${CSH_MAIL_PASSWORD}
+      JWT_SECRET_KEY: ${CSH_JWT_SECRET_KEY}
       FEEDBACK_EMAIL: noreply@cerclesainthonore.fr
       SUPPORT_EMAIL: cerclesthonore@gmail.com
       MONGODB_HOST: csh-mongodb
       MONGODB_DATABASE: CSH
-      ORIGIN: https://cerclesainthonore.fr,https://www.cerclesainthonore.fr
+      ORIGIN: https://cerclesainthonore.fr,https://www.cerclesainthonore.fr,https://admin.cerclesainthonore.fr,https://www.admin.cerclesainthonore.fr
       PORT: 3000
     networks:
       - csh-back-net
@@ -34,6 +35,20 @@ services:
     restart: always
     ports:
       - "8000:8080"
+    networks:
+      - csh-net
+    depends_on:
+      - csh-backend
+    volumes:
+      - /var/www/cerclesainthonore/assets/images/:/usr/share/nginx/html/assets/images/
+
+  csh-admin:
+    <<: *deploy
+    build: admin-csh.old
+    container_name: csh-admin
+    restart: always
+    ports:
+      - "8002:8080"
     networks:
       - csh-net
     depends_on:

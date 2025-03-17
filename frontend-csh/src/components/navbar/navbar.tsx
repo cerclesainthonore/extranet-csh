@@ -36,7 +36,7 @@ const Navbar = (): ReactNode => {
                     <span>{t("navbar.conferences")}</span>
                 </a>
                 <a href="/about" className="navbar-link">
-                    <span>{t("navbar.about")}</span>
+                    <span>{t("navbar.agenda")}</span>
                 </a>
                 <a href={parishUrl} target="_blank" className="navbar-link">
                     <span>{t("navbar.parish")}</span>

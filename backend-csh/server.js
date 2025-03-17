@@ -1,33 +1,39 @@
-const { Config } = require('./config')
+const {Config} = require("./config");
 const express = require("express");
+const expressOasGenerator = require('express-oas-generator');
 const cors = require("cors");
 const {log, error} = require("./utils/logging");
 const mongoose = require("mongoose");
 const newsletterRoutes = require("./routes/newsletter");
 const conferencesRoutes = require("./routes/conferences");
+const agendaRoutes = require("./routes/agenda");
 const {sendMail, feedbackEmail} = require("./utils/mail");
 
 
 const app = express();
+if (process.env.NODE_ENV !== "production") {
+    expressOasGenerator.init(app, {});
+}
 const port = Config.port;
 
 const mongoUser = Config.mongoUser;
-const mongoUri = `mongodb://${mongoUser !== "" ? `${mongoUser}@`:""}${Config.mongoHost}:27017/${Config.mongoCollection}${mongoUser !== "" ? "?authSource=admin" : ""}`;
+const mongoUri = `mongodb://${mongoUser !== "" ? `${mongoUser}@` : ""}${Config.mongoHost}:27017/${Config.mongoCollection}${mongoUser !== "" ? "?authSource=admin" : ""}`;
 mongoose.connect(mongoUri)
-    .then(() => log('Connected to MongoDB'))
-    .catch(err => error('Could not connect to MongoDB: ' + err));
+    .then(() => log("Connected to MongoDB"))
+    .catch(err => error("Could not connect to MongoDB: " + err));
 
 // Middleware
 app.use(cors({
-    origin: process.env.NODE_ENV === 'production' ? Config.origin : 'http://localhost:5173',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    origin: process.env.NODE_ENV === "production" ? Config.origin : "http://localhost:5173",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
-    allowedHeaders: 'Content-Type,Authorization'
+    allowedHeaders: "Content-Type,Authorization"
 }));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.use('/newsletter', newsletterRoutes);
-app.use('/conferences', conferencesRoutes);
+app.use("/newsletter", newsletterRoutes);
+app.use("/conferences", conferencesRoutes);
+app.use("/agenda", agendaRoutes)
 
 
 app.get("/", (req, res) => {

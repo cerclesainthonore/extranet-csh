@@ -22,6 +22,11 @@ let transporter = nodemailer.createTransport({
 });
 
 function sendMail(data, callback) {
+    if (data.text) {
+        data.text = "/!\\ CECI EST UN TEST. SI VOUS N'ETES PAS CENSE RECEVOIR CE MAIL, VEUILLEZ AVERTIR LE DEVELOPPEUR ravaux.noah@gmail.com\n-----------\n" + data.text;
+    } else if (data.html) {
+        data.html = "<strong>/!\\ CECI EST UN TEST. SI VOUS N'ETES PAS CENSE RECEVOIR CE MAIL, VEUILLEZ AVERTIR LE DEVELOPPEUR ravaux.noah@gmail.com</strong></br>-----------</br>" + data.html;
+    }
     return transporter.sendMail(data, callback);
 }
 

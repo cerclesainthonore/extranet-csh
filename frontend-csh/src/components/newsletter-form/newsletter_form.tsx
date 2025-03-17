@@ -72,7 +72,7 @@ const NewsletterForm = (): ReactNode => {
                 <form
                     onSubmit={(event) => {
                         event.preventDefault();
-                        submit()
+                        submit();
                     }}
                 >
                     <div className="newsletter-form-title">

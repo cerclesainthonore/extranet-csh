@@ -1,4 +1,4 @@
-import {About, Conferences, Contact, Home, NoPage} from "./pages";
+import {Agenda, Conferences, Contact, Home, NoPage, Verify} from "./pages";
 import {createBrowserRouter} from "react-router-dom";
 import {Layout} from "./components";
 import React from "react";
@@ -18,8 +18,12 @@ const router = createBrowserRouter([
         element: <Home/>
       },
       {
-        path: `/about`,
-        element: <About/>
+        path: `/agenda`,
+        element: <Agenda/>
+      },
+      {
+        path: `/agenda/verify`,
+        element: <Verify/>
       },
       {
         path: `/conferences`,

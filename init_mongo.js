@@ -1,6 +1,7 @@
 db = db.getSiblingDB("CSH");
 db.createCollection("Newsletter");
 db.createCollection("Conferences");
+db.createCollection("Agenda");
 
 function insertConference({
                               title,
