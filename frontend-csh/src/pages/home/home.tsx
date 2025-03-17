@@ -1,4 +1,4 @@
-import {ReactNode} from "react";
+import {ReactNode, useState} from "react";
 import {Divider} from "@mui/joy";
 import {useTranslation} from "react-i18next";
 import {NewsletterForm} from "../../components";
@@ -9,6 +9,8 @@ const imagesUrl: string = import.meta.env.VITE_EXTRANET_CSH_IMAGES_URL;
 
 const Home = (): ReactNode => {
     const {t} = useTranslation();
+
+    const [antiCachingNumber] = useState(Date.now());
 
     return (
         <div className="home-container">
@@ -36,7 +38,7 @@ const Home = (): ReactNode => {
                     <p className="home-flyer-title">{t("home.conferenceTitle").toUpperCase()}</p>
                     <a href={imagesUrl + "/next_conference.png"} download="prochaine_conference_csh">
                         <img
-                            src={imagesUrl + "/next_conference.png"}
+                            src={imagesUrl + "/next_conference.png?nocache=" + antiCachingNumber}
                             alt={t("home.conferenceTitle")}
                             className="home-flyer-image"
                         />
@@ -46,7 +48,7 @@ const Home = (): ReactNode => {
                     <p className="home-flyer-title">{t("home.programTitle").toUpperCase()}</p>
                     <a href={imagesUrl + "/program.png"} download="programme_csh">
                         <img
-                            src={imagesUrl + "/program.png"}
+                            src={imagesUrl + "/program.png?nocache=" + antiCachingNumber}
                             alt={t("home.programTitle")}
                             className="home-flyer-image"
                         />
