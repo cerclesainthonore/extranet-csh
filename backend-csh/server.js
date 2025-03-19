@@ -5,6 +5,7 @@ const {log, error} = require("./utils/logging");
 const mongoose = require("mongoose");
 const newsletterRoutes = require("./routes/newsletter");
 const conferencesRoutes = require("./routes/conferences");
+const bannerRoutes = require("./routes/banner");
 const {sendMail, feedbackEmail} = require("./utils/mail");
 
 
@@ -28,6 +29,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use('/newsletter', newsletterRoutes);
 app.use('/conferences', conferencesRoutes);
+app.use('/banner', bannerRoutes);
 
 
 app.get("/", (req, res) => {

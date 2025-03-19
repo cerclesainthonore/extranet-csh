@@ -14,6 +14,12 @@ interface IConferenceDetailProps extends IConferenceProps {
   link?: string;
 }
 
+interface IBannerProps {
+  text: string;
+  href?: string;
+  bannerColor: string;
+}
+
 class Controller {
   public static apiUrl: string = import.meta.env.VITE_EXTRANET_CSH_API_URL;
 
@@ -51,6 +57,14 @@ class Controller {
     }
     return response.data;
   }
+
+  public static async getBanner(): Promise<IBannerProps> {
+    const response = await axios.get(Controller.apiUrl + "/banner");
+    if (response.status !== 200) {
+      throw new Error('Network response was not ok');
+    }
+    return response.data;
+  }
 }
 
-export {Controller, type IConferenceProps, type IConferenceDetailProps};
+export {Controller, type IConferenceProps, type IConferenceDetailProps, type IBannerProps};

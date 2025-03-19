@@ -1,6 +1,17 @@
 db = db.getSiblingDB("CSH");
 db.createCollection("Newsletter");
 db.createCollection("Conferences");
+db.CreateCollection("Banner");
+
+db.Banner.updateOne({}, {
+    $setOnInsert: {
+        text: "Réservez une place pour l'ostension de la Sainte Tunique du Christ",
+        href: "https://www.helloasso.com/associations/les-amis-de-la-sainte-tunique-d-argenteuil/evenements/conference-sur-la-sainte-tunique-d-argenteuil-a-paris",
+        bannerColor: "#b32b2e",
+        dateStart: new Date("2025-03-15T00:00:00"),
+        dateEnd: new Date("2025-03-28T19:30:00"),
+    }
+}, {upsert: true});
 
 function insertConference({
                               title,
