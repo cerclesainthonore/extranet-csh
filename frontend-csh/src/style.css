@@ -132,12 +132,24 @@ body {
         min-height: calc(100vh - var(--csh-footer-height-normal));
         padding-top: var(--csh-navbar-height-big);
     }
+
+    .main-body:has(.banner-container) {
+        padding-top: calc(var(--csh-navbar-height-big) + var(--csh-navbar-height-normal));
+    }
 }
 
 @media (min-width: 1200px) {
     .main-body {
         min-height: calc(100vh - var(--csh-footer-height-normal));
+    }
+
+    .main-body:not(:has(.banner-container)) {
         padding-top: var(--csh-navbar-height-normal);
+    }
+
+    .main-body:has(banner-container) {
+        display: none;
+        padding-top: calc(var(--csh-navbar-height-normal) + var(--csh-navbar-height-normal));
     }
 }
 

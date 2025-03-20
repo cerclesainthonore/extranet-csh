@@ -69,10 +69,77 @@
     background-color: var(--csh-color-1);
 }
 
+.MuiIconButton-root.banner-close {
+    right: 50%;
+    width: 30px;
+    left: 50%;
+
+
+    &.closed {
+        rotate: 180deg;
+        background-color: var(--csh-color-1);
+        border-radius: 100%;
+        top: -25px;
+    }
+
+    .MuiSvgIcon-root {
+        color: white;
+        zoom: 150%;
+        transition: transform 0.3s ease;
+    }
+}
+
+.MuiIconButton-root.banner-close:hover {
+    &.open {
+        background-color: transparent;
+    }
+
+    .MuiSvgIcon-root {
+        transform: scale(1.5);
+    }
+}
+
+.banner-container {
+    position: absolute;
+    width: 100%;
+    height: var(--csh-navbar-height-normal);
+    transition: transform 0.2s ease;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+
+    .banner-text {
+        zoom: 130%;
+        display: flex;
+        justify-self: center;
+        text-decoration: underline;
+        align-self: center;
+        font-weight: 600;
+        color: white;
+        margin: 0 10px;
+        pointer-events: auto;
+
+        &.closed {
+            display: none;
+        }
+    }
+
+    &.nodisplay {
+        display: none;
+    }
+
+    &.closed {
+        height: 0;
+    }
+}
+
 @media (min-width: 1200px) {
     .navbar-container {
         height: var(--csh-navbar-height-normal);
     }
+
+    .banner-container {
+        top: var(--csh-navbar-height-normal);
+    }
+
     .navbar-container .navbar-logo img {
         left: 50%;
     }
@@ -121,6 +188,10 @@
 
     .navbar-container {
         height: var(--csh-navbar-height-big);
+    }
+
+    .banner-container {
+        top: var(--csh-navbar-height-big);
     }
 
     .navbar-container .navbar-logo img {

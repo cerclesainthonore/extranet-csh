@@ -1,8 +1,10 @@
 import {useTranslation} from "react-i18next";
 import {ReactNode, useEffect, useState} from "react";
-import {Drawer, ModalClose} from "@mui/joy";
+import {Drawer, IconButton, ModalClose} from "@mui/joy";
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 
 import "./navbar.css";
+import {Controller, IBannerProps} from "../../controller/controller.ts";
 
 const parishUrl: string = import.meta.env.VITE_EXTRANET_CSH_PARISH_URL;
 const igUrl: string = import.meta.env.VITE_EXTRANET_CSH_INSTAGRAM_URL;
@@ -13,6 +15,12 @@ const liUrl: string = import.meta.env.VITE_EXTRANET_CSH_LINKEDIN_URL;
 const Navbar = (): ReactNode => {
     const {t} = useTranslation();
     const [menuOpen, setMenuOpen] = useState(false);
+
+    const [bannerOpen, setBannerOpen] = useState(true);
+    const [bannerProps, setBannerProps] = useState<IBannerProps | undefined>(undefined);
+    useEffect(() => {
+        Controller.getBanner().then((value) => setBannerProps(value));
+    }, []);
 
     // Ferme le menu si la fenêtre est agrandie
     useEffect(() => {
@@ -77,6 +85,16 @@ const Navbar = (): ReactNode => {
                 <ModalClose className="navbar-menu-close"/>
                 {NavbarLinks}
             </Drawer>
+            <div className={`banner-container ${bannerProps || "nodisplay"} ${bannerOpen ? "open" : "closed"}`} style={{
+                background: `linear-gradient(to bottom, var(--csh-color-1), 40%, ${bannerProps?.bannerColor})`
+            }}>
+                <a href={bannerProps?.href ?? ""} className={`banner-text ${bannerOpen || "closed"}`}>
+                    {bannerProps?.text}
+                </a>
+                <IconButton className={`banner-close ${bannerOpen ? "open" : "closed"}`} onClick={() => setBannerOpen(!bannerOpen)} variant="plain">
+                    <ExpandLessIcon/>
+                </IconButton>
+            </div>
         </div>
     );
 }
