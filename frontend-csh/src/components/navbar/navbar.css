@@ -73,7 +73,7 @@
     right: 50%;
     width: 30px;
     left: 50%;
-    transition: zoom 0.2s ease;
+
 
     &.closed {
         rotate: 180deg;
@@ -85,21 +85,25 @@
     .MuiSvgIcon-root {
         color: white;
         zoom: 150%;
+        transition: transform 0.3s ease;
     }
 }
 
 .MuiIconButton-root.banner-close:hover {
-    background-color: transparent;
+    &.open {
+        background-color: transparent;
+    }
 
     .MuiSvgIcon-root {
-        zoom: 200%;
+        transform: scale(1.5);
     }
 }
 
-.navbar-container .banner-container {
+.banner-container {
     position: absolute;
     width: 100%;
     height: var(--csh-navbar-height-normal);
+    transition: transform 0.2s ease;
     box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 
     .banner-text {
@@ -110,7 +114,6 @@
         align-self: center;
         font-weight: 600;
         color: white;
-        transition: zoom 0.3s ease;
         margin: 0 10px;
         pointer-events: auto;
 
@@ -133,7 +136,7 @@
         height: var(--csh-navbar-height-normal);
     }
 
-    .navbar-container .banner-container {
+    .banner-container {
         top: var(--csh-navbar-height-normal);
     }
 
@@ -187,7 +190,7 @@
         height: var(--csh-navbar-height-big);
     }
 
-    .navbar-container .banner-container {
+    .banner-container {
         top: var(--csh-navbar-height-big);
     }
 
