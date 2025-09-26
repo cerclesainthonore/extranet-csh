@@ -156,13 +156,13 @@ const NewsletterForm = () => {
                     </div>
                     <iframe width="540" height="950"
                             src={newsletter_url}
-                            scrolling="auto" style={{
-                        display: "block",
-                        marginLeft: "auto",
-                        marginRight: "auto",
-                        maxWidth: "100%",
-                        overflow: "visible",
-                    }}></iframe>
+                            style={{
+                                display: "block",
+                                marginLeft: "auto",
+                                marginRight: "auto",
+                                maxWidth: "100%",
+                                overflow: "visible",
+                            }}></iframe>
                 </div>
             </div>
         </>
