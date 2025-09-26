@@ -1,6 +1,6 @@
-import {ReactNode, useCallback, useState} from "react";
+/*import {ReactNode, useCallback, useState} from "react";*/
 import {useTranslation} from "react-i18next";
-import {
+/*import {
     Button,
     FormControl,
     FormLabel,
@@ -8,10 +8,10 @@ import {
     Stack, Textarea,
 } from "@mui/joy";
 import {Controller} from "../../controller/controller.ts";
-import {toast} from "react-toastify";
+import {toast} from "react-toastify";*/
 
 import "./newsletter_form.css";
-
+/*
 interface IErrorFeedback {
     data: { response: { data: { code: number } } }
 }
@@ -139,5 +139,34 @@ const NewsletterForm = (): ReactNode => {
         </div>
     );
 };
+
+export {NewsletterForm};*/
+
+const newsletter_url: string = import.meta.env.VITE_EXTRANET_CSH_NEWSLETTER_URL;
+
+const NewsletterForm = () => {
+    const {t} = useTranslation();
+
+    return (
+        <>
+            <div className="newsletter-container">
+                <div className="newsletter-form">
+                    <div className="newsletter-form-title">
+                        <span>{t("newsletter.title").toUpperCase()}</span>
+                    </div>
+                    <iframe width="540" height="950"
+                            src={newsletter_url}
+                            style={{
+                                display: "block",
+                                marginLeft: "auto",
+                                marginRight: "auto",
+                                maxWidth: "100%",
+                                overflow: "visible",
+                            }}></iframe>
+                </div>
+            </div>
+        </>
+    )
+}
 
 export {NewsletterForm};

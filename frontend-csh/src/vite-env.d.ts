@@ -9,7 +9,8 @@ interface ImportMetaEnv {
   readonly VITE_EXTRANET_CSH_LINKEDIN_URL: string,
   readonly VITE_EXTRANET_CSH_SUPPORT_EMAIL: string,
   readonly VITE_EXTRANET_CSH_WEBMASTER_EMAIL: string,
-  readonly VITE_EXTRANET_CSH_IMAGES_URL: string
+  readonly VITE_EXTRANET_CSH_IMAGES_URL: string,
+  readonly VITE_EXTRANET_CSH_NEWSLETTER_URL: string
 }
 
 interface ImportMeta {
